@@ -1,0 +1,24 @@
+# Fichero de configuracion del GEDEE
+# version YAML 
+
+
+##############################################
+#  Valores referentes al GEDEE #
+##############################################
+# Propiedades del GEDEE
+ 
+      namespace: \Emod\Nucleo\Gedees
+      clase: GedeeENucleo
+      path_entidad_clase: [raiz_gedees]/enucleo/gedee_bib_funciones/class_gedee_enucleo.php(esta es provisional pues se cambia en el control) 
+      tipo_entidad: clase
+      instancias:
+                  GedeeENucleo:
+                                datos:
+                                       version_gedee: 0.0.1
+                                       version_fich_configuracion: YAML 0.0.1                                                                         
+                      
+					  
+					  
+                      
+					  
+					  
