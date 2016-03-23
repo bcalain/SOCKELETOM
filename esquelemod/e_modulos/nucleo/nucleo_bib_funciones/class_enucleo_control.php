@@ -273,9 +273,7 @@
                         //$La_elementos_filtrado['identificador_referencia_local']es el string prefijo, que identifica que una variable o elemento es referencia a otra variable o elemento 
                         //cuando se llega a este punto se sabe que existe $La_elementos_filtrado['identificador_referencia_local'] por una condicion puesta anterior a esta linea, es por eso que la funcion no chequea que exista este valor
                         //de utilizarse esta funcion closure en otra parte debe tenerse en cuenta que no se chequean los parametros en su interior    
-                        echo "<pre>esto esta en class_enucleo_control linea 249 ";
-                        print_r( $datos_configuracion ); //quitar esto,es para pruebas
-                        echo '<pre>';
+                        
                         $filtrar_irl =
                                 function ( &$valor , $clave , $La_elementos_filtrado )
                                     {
@@ -291,7 +289,6 @@
                                                                        {
                                                                             $valor = $La_elementos_filtrado' . $variable_referenciada . ';
                                                                        }';
-                                            echo '<p>esto esta en class_enucleo_control linea259' . $string_filtro . '<p>';
                                             eval( $string_filtro );
                                             }
                                         }
@@ -299,9 +296,6 @@
                          			 
                         array_walk_recursive( $datos_configuracion , $filtrar_irl , $datos_configuracion );
 
-                        echo '<pre>esto esta en class_enucleo_control linea268';
-                        print_r( $datos_configuracion ); //quitar esto,es para pruebas
-                        echo '<pre>';
                         }
                     
                     //seccion para iniciar y actualizar la configuracion del sistema o proceso nucleo 
@@ -893,16 +887,6 @@
                     $this->lsClaseGedeeProcesoEjecucion     = $clase_gedee_proceso_pausa;
                     $this->lsIdGedeeProcesoEjecucion        = $id_gedee_proceso_pausa;
 
-                    //borrar estas tres lineas de abajo, son solo para prueba 
-                    echo "<p>///esto debe borrarse,tambien borrarse EEoConfiguracion->acceder_estructura_completa(), es un aprueba y esta en " . __FILE__ . " l&iacute;nea " . __LINE__ . " ////////////////////////////////////////////////////////////////////////////////////////<p>";
-                    $p = $this->EEoConfiguracion->acceder_estructura_completa();
-                    \Emod\Nucleo\Herramientas\EArreglo::doDump( $p );
-                    
-                    //borrar estas tres lineas de abajo, son solo para prueba 
-                    echo "<p>///esto debe borrarse,tambien borrarse EEoSeguridad->acceder_estructura_completa(), es un aprueba y esta en " . __FILE__ . " l&iacute;nea " . __LINE__ . " ////////////////////////////////////////////////////////////////////////////////////////<p>";
-                    $p = $this->EEoSeguridad->acceder_estructura_completa();
-                    \Emod\Nucleo\Herramientas\EArreglo::doDump( $p );
-                    
                     return true;
                     }
                 }

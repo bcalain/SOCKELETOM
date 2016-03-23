@@ -248,8 +248,6 @@
                         }
                     }
 
-                echo '<p>' . $sentencia . ' en ' . __METHOD__ . ' l&iacute;nea ' . __LINE__ . '<p>' ;
-                
                 eval( $sentencia ) ;
 
                 return $resultado ;
