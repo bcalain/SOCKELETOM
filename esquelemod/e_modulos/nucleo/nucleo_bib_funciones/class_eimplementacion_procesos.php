@@ -150,19 +150,19 @@
                     {
                     if ( $Ls_id_proceso == 'hereda' )
                         {
-                        $Ls_id_proceso = self::$EEoNucleo->idProcesoEjecucion() ;
+                        $Ls_id_proceso = $this->EEoNucleo->idProcesoEjecucion() ;
                         }
                     if ( $Ls_id_gedee_proceso == 'hereda' )
                         {
-                        $Ls_id_gedee_proceso = self::$EEoNucleo->idGedeeProcesoEjecucion() ;
+                        $Ls_id_gedee_proceso = $this->EEoNucleo->idGedeeProcesoEjecucion() ;
                         }
                     if ( $Ls_clase_gedee_proceso == 'hereda' )
                         {
-                        $Ls_clase_gedee_proceso = self::$EEoNucleo->claseGedeeProcesoEjecucion() ;
+                        $Ls_clase_gedee_proceso = $this->EEoNucleo->claseGedeeProcesoEjecucion() ;
                         }
                     if ( $Ls_namespace_gedee_proceso == 'hereda' )
                         {
-                        $Ls_namespace_gedee_proceso = self::$EEoNucleo->namespaceGedeeProcesoEjecucion() ;
+                        $Ls_namespace_gedee_proceso = $this->EEoNucleo->namespaceGedeeProcesoEjecucion() ;
                         }
                 /////////////////////////////////////////////////////////////////////////////////
                     

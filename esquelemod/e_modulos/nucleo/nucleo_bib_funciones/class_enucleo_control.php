@@ -191,7 +191,7 @@
                     {
                     $this->lsPathDirEsquelemod = $Ls_path_dir_esquelemod;
                     $this->lsPathDirModulos    = $Ls_path_dir_modulos;
-                    $this->procesoHijo( $this->lsIdProcesoNucleo , '*' );
+                    
                     return true;
                     }
                 else
@@ -312,6 +312,8 @@
                         $this->lsNamespaceGedeeProcesoEjecucion = $this->lsNamespaceGedeeProcesoNucleo;
                         $this->lsClaseGedeeProcesoEjecucion     = $this->lsClaseGedeeProcesoNucleo;
                         $this->lsIdGedeeProcesoEjecucion        = $this->lsIdGedeeProcesoNucleo;
+                        
+                        $this->procesoHijo( $this->lsIdProcesoNucleo , '*' );
                         
                         }
                     else
@@ -1168,7 +1170,7 @@
                     		$this->lsIdProcesoNucleo      = $this->apuntadorProcesoActual['id_proceso'];
                     		$this->lsIdGedeeProcesoNucleo = $this->apuntadorProcesoActual['id_entidad_gedee'];
                     		}
-                        
+                        echo 'vvvvvvvvvvvvvvvvvvvvvv'.$this->apuntadorProcesoActual['namespace_gedee'];
                         $this->lsIdProcesoEjecucion             = $this->apuntadorProcesoActual['id_proceso'];
                         $this->lsPathDirRaizProcesoEjecucion    = $this->apuntadorProcesoActual['path_dir_raiz_proceso'];
                         $this->lsNamespaceGedeeProcesoEjecucion = $this->apuntadorProcesoActual['namespace_gedee'];
