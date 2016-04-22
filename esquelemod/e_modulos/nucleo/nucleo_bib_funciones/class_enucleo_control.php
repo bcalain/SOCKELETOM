@@ -1177,7 +1177,7 @@
                     		$this->lsIdProcesoNucleo      = $this->apuntadorProcesoActual['id_proceso'];
                     		$this->lsIdGedeeProcesoNucleo = $this->apuntadorProcesoActual['id_entidad_gedee'];
                     		}
-                        echo 'vvvvvvvvvvvvvvvvvvvvvv'.$this->apuntadorProcesoActual['namespace_gedee'];
+                        
                         $this->lsIdProcesoEjecucion             = $this->apuntadorProcesoActual['id_proceso'];
                         $this->lsPathDirRaizProcesoEjecucion    = $this->apuntadorProcesoActual['path_dir_raiz_proceso'];
                         $this->lsNamespaceGedeeProcesoEjecucion = $this->apuntadorProcesoActual['namespace_gedee'];
@@ -1226,10 +1226,7 @@
             if ( !empty( $this->laArbolProcesos ) )
                 {
                 $historial_arbol_procesos = $this->laArbolProcesos;
-                echo 'solo para pruebas *********************************';
-                echo 'estructura real del arbol de procesos en ' . __METHOD__ . __LINE__ . '************<p>';
-                var_dump( $this->laArbolProcesos );
-                echo '<p>solo para pruebas *********************************fin de estructura real del arbol de procesos*************************************************';
+                
                 return $this->filtrarHistorialArbolProcesos( $historial_arbol_procesos );
                 }
             return null;
