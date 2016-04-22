@@ -967,18 +967,25 @@
             return null;
             }
 
-        //debuelve el valor del path del dierctorio raiz del proceso en ejecucion 	
+        //debuelve el valor del path del dierectorio raiz del proceso en ejecucion 	
         public function pathDirRaizProcesoEjecucion()
             {
             return $this->lsPathDirRaizProcesoEjecucion;
             }
 
+        //debuelve el valor del path absoluto del dierectorio raiz del proceso en ejecucion
+        public function pathAbsolutoDirRaizProcesoEjecucion()
+            {
+            return $this->lsPathDirEsquelemod.'/e_modulos/'.$this->pathDirRaizProcesos().'/'.$this->lsPathDirRaizProcesoEjecucion;
+            }
+            
         //debuelve el valor del id del proceso en ejecucion 	
         public function idProcesoEjecucion()
             {
             return $this->lsIdProcesoEjecucion;
             }
 
+        //debuelve el valor del GEDEE del proceso en ejecucion
         public function gedeeProcesoEjecucion()
             {
             return $this->lsNamespaceGedeeProcesoEjecucion . '\\' . $this->lsClaseGedeeProcesoEjecucion .'\\'. $this->lsIdGedeeProcesoEjecucion ;
