@@ -249,18 +249,8 @@
             {
             if ( empty( $this->lbEConfiguracionEjecutada ) && !empty( $this->lsIdProcesoNucleo ) && is_object( $this->EEoInterfazDatos ) && is_object( $this->EEoConfiguracion ) && !empty( $La_fich_interfaz_config ) )
                 {
-                $resultado           = null;
-                /* 
-                $id_proceso_pausa              = $this->lsIdProcesoEjecucion;
-                $namespace_gedee_proceso_pausa = $this->lsNamespaceGedeeProcesoEjecucion;
-                $clase_gedee_proceso_pausa     = $this->lsClaseGedeeProcesoEjecucion;
-                $id_gedee_proceso_pausa        = $this->lsIdGedeeProcesoEjecucion;
-
-                $this->lsIdProcesoEjecucion             = $this->lsIdProcesoNucleo;
-                $this->lsNamespaceGedeeProcesoEjecucion = $this->lsNamespaceGedeeProcesoNucleo;
-                $this->lsClaseGedeeProcesoEjecucion     = $this->lsClaseGedeeProcesoNucleo;
-                $this->lsIdGedeeProcesoEjecucion        = $this->lsIdGedeeProcesoNucleo;
-                */
+                $resultado = null;
+                
                 $datos_configuracion = $this->EEoInterfazDatos->gestionEjecucionInterfazSalida( $this->lsIdProcesoNucleo , $La_fich_interfaz_config , $La_fich_datos_config , 'adyacente' );
 
                 if ( !empty( $datos_configuracion ) )
@@ -392,13 +382,7 @@
                     
                     
                     }
-                /* 
-                $this->lsIdProcesoEjecucion             = $id_proceso_pausa;
-                $this->lsNamespaceGedeeProcesoEjecucion = $namespace_gedee_proceso_pausa;
-                $this->lsClaseGedeeProcesoEjecucion     = $clase_gedee_proceso_pausa;
-                $this->lsIdGedeeProcesoEjecucion        = $id_gedee_proceso_pausa;
-                */
-
+                
                 if ( !empty( $resultado ) )
                     {
                     $this->lbEConfiguracionEjecutada = true;
@@ -407,47 +391,7 @@
                 }
             return null;
             }
-		/*
-        public function iniciacionDatosSeguridadEsquelemod()
-            {
-            if ( empty( $this->lbESeguridadIniciada ) && !empty( $this->lsIdProcesoNucleo ) && !empty( $this->lbEConfiguracionEjecutada ) && is_object( $this->EEoConfiguracion ) )
-                {
-                $resultado       = null;
-
-                $id_proceso_pausa              = $this->lsIdProcesoEjecucion;
-                $namespace_gedee_proceso_pausa = $this->lsNamespaceGedeeProcesoEjecucion;
-                $clase_gedee_proceso_pausa     = $this->lsClaseGedeeProcesoEjecucion;
-                $id_gedee_proceso_pausa        = $this->lsIdGedeeProcesoEjecucion;
-
-                $this->lsIdProcesoEjecucion             = $this->lsIdProcesoNucleo;
-                $this->lsNamespaceGedeeProcesoEjecucion = $this->lsNamespaceGedeeProcesoNucleo;
-                $this->lsClaseGedeeProcesoEjecucion     = $this->lsClaseGedeeProcesoNucleo;
-                $this->lsIdGedeeProcesoEjecucion        = $this->lsIdGedeeProcesoNucleo;
-
-
-                $datos_seguridad = $this->EEoConfiguracion->accederDatosConfiguracionProceso( 'hereda' , 'hereda' , 'hereda' , 'hereda' , "['sistema']['datos_seguridad']" );
-                $datos_seguridad_eliminar = array( 'sistema' => array('datos_seguridad' => array() ) );
-                $this->EEoConfiguracion->accederDatosConfiguracionProceso( 'hereda' , 'hereda' , 'hereda' , 'hereda' , $datos_seguridad_eliminar , 3 );
-                
-                if ( !empty( $datos_seguridad ) )
-                    {
-                    $resultado = $this->EEoSeguridad->iniciarDatosSeguridadProceso( $datos_seguridad );
-                    }
-
-                $this->lsIdProcesoEjecucion             = $id_proceso_pausa;
-                $this->lsNamespaceGedeeProcesoEjecucion = $namespace_gedee_proceso_pausa;
-                $this->lsClaseGedeeProcesoEjecucion     = $clase_gedee_proceso_pausa;
-                $this->lsIdGedeeProcesoEjecucion        = $id_gedee_proceso_pausa;
-
-                if ( !empty( $resultado ) )
-                    {
-                    $this->lbESeguridadIniciada = true;
-                    return $resultado;
-                    }
-                }
-            return null;
-            }
-		*/
+		
 //esta funcion es para acceder a las propiedades declaradas en la seccion ['propiedades_proceso'] del fichero de configuracion del sistema            
         public function accesoPropiedadesEsquelemod()
             {
@@ -524,7 +468,6 @@
                     $existencia_entidad_error_emod = \Emod\Nucleo\Errores::existenciaEntidad( $namespace2 , $clase2 , $id_error2 );
                     if ( empty( $existencia_entidad_error_emod ) )
                         {
-//echo 'borrar esto es solo para pruebas, esta en:'.__FILE__.' linea '.__LINE__.'<p>'; var_dump( $La_configuracion_nucleo_errores['entidad_errores_emod'] );
 
                         $gestion_ingresos_errores_emod = \Emod\Nucleo\Errores::gestionIngresosEntidades( $La_configuracion_nucleo_errores['entidad_errores_emod'] );
                         
@@ -810,7 +753,7 @@
             return $this->lsIdBloqueEjecucionProcesos;
             }
 
-//escribir la ayuda de este procedimiento
+
         private function ejecutarBloqueProcesos( $id_bloque )
             {
             $La_bloque_procesos = null;
@@ -881,7 +824,7 @@
                                 trigger_error('El proceso: '.$id_proceso.', de id gedee: '.$Ls_id_gedee_proceso_ejecucion.', clase gedee: '.$Ls_namespace_gedee_proceso_ejecucion.'\\'.$Ls_clase_gedee_proceso_ejecucion.' no se pudo ejecutar satisfact&oacute;riamente ' , E_USER_WARNING ) ;
                                 }
 
-                            $this->statuEjecucionProceso            = null;
+                            $this->statuEjecucionProceso = null;
                             }
                         }
                     $this->lsIdProcesoEjecucion             = $id_proceso_pausa;
