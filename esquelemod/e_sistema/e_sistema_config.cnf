@@ -43,32 +43,13 @@
  sistema: 
           #Propiedades del sistema o proceso nucleo
           propiedades_proceso: 
-                               version_sistema: macro 0.0.1
-                               version_fich_configuracion: YAML 0.0.1
+                               version_sistema: 1.0.0
                                id_proceso: NucleoEsquelemod
                                namespace_gedee: \Emod\Nucleo\Gedees
                                clase_gedee: GedeeENucleo
                                id_gedee: GedeeENucleo 
-                               version: 0.0.1
                                dependencias: 
                                conflictos:
-          #Datos de seguridad del proceso esquelemod
-          datos_seguridad:
-                           permiso_ejecucion:
-                                              ambito: restrictivo
-                                              procesos:
-                                                         
-                           acceso_seguridad:
-                                              ambito: restrictivo
-                                              procesos:
-                                                        
-                           acceso_configuracion:
-                                                 ambito: restrictivo
-                                                 procesos:
-                                                        
-                           acceso_datos:
-                                         ambito: restrictivo
-                                         procesos:
 #
 #########################################################
 #  Valores referentes a las Herramientas del Esquelemod #

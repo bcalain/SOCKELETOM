@@ -48,38 +48,13 @@ $datos =array (
   array (
     'propiedades_proceso' => 
     array (
-      'version_sistema' => 'macro 0.0.1',
-      'version_fich_configuracion' => 'YAML 0.0.1',
+      'version_sistema' => '1.0.0',
       'id_proceso' => 'NucleoEsquelemod',
       'namespace_gedee' => '\\Emod\\Nucleo\\Gedees',
       'clase_gedee' => 'GedeeENucleo',
       'id_gedee' => 'GedeeENucleo',
-      'version' => '0.0.1',
       'dependencias' => '',
       'conflictos' => '',
-    ),
-    'datos_seguridad' => 
-    array (
-      'permiso_ejecucion' => 
-      array (
-        'ambito' => 'restrictivo',
-        'procesos' => '',
-      ),
-      'acceso_seguridad' => 
-      array (
-        'ambito' => 'restrictivo',
-        'procesos' => '',
-      ),
-      'acceso_configuracion' => 
-      array (
-        'ambito' => 'restrictivo',
-        'procesos' => '',
-      ),
-      'acceso_datos' => 
-      array (
-        'ambito' => 'restrictivo',
-        'procesos' => '',
-      ),
     ),
   ),
   'herramientas' => 
