@@ -60,10 +60,6 @@
         //identifica si la configuracion del sistema esquelemod fue ejecutada con exito
         private $lbEConfiguracionEjecutada     = false;
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////Propiedades del Sistema de seguridad para el Esquelemod//////////////////////////////////////////////////
-        //identifica si la seccion de seguridad del sistema esquelemod fue inicializada con exito, esta seccion es la correspondiente al objeto seguridad
-        private $lbESeguridadIniciada          = false;
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////Propiedades respectivas a los errores//////////////////////////////////////////////////
         //identifica si la iniciacion de la clase Errores fue ejecutada con exito
         private $lbIniciacionErrores           = null;
@@ -395,7 +391,7 @@
 //esta funcion es para acceder a las propiedades declaradas en la seccion ['propiedades_proceso'] del fichero de configuracion del sistema            
         public function accesoPropiedadesEsquelemod()
             {
-            if ( !empty( $this->lbESeguridadIniciada ) && !empty( $this->lsIdProcesoNucleo ) && !empty( $this->lbEConfiguracionEjecutada ) && is_object( $this->EEoConfiguracion ) )
+            if ( !empty( $this->lsIdProcesoNucleo ) && !empty( $this->lbEConfiguracionEjecutada ) && is_object( $this->EEoConfiguracion ) )
                 {
                 
                 $id_proceso_pausa              = $this->lsIdProcesoEjecucion;
