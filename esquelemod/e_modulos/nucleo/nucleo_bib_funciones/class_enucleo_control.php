@@ -71,13 +71,12 @@
         private $lbIniciacionUtiles            = null;
         ////////////////////////////////////////Propiedades respectivas a los procesos//////////////////////////////////////////////////
         //valor del path del directorio raiz del proceso en ejecucion, este path comienza a partir del dierctorio procesos del arbol de directorios del sistema esquelemod  proceso en ejecucion, nombre del proceso, en caso de los procesos appmod aqui se muestra el id del proceso que no es lo mismo que el id de la aplicacion o el id del modulo, sino el proceso que trabaja las aplicaciones o modulos
-        private $lsPathDirRaizProcesoEjecucion = ''; //esto va vacio el valor que tiene es para hacer pruebas
+        private $lsPathDirRaizProcesoEjecucion = ''; 
         //valor del proceso en ejecucion, nombre del proceso, en caso de los procesos appmod aqui se muestra el id del proceso que no es lo mismo que el id de la aplicacion o el id del modulo, sino el proceso que trabaja las aplicaciones o modulos
-        private $lsIdProcesoEjecucion          = ''; //esto va vacio el valor que tiene es para hacer pruebas
+        private $lsIdProcesoEjecucion          = ''; 
         private $lsNamespaceGedeeProcesoEjecucion = '';
         private $lsClaseGedeeProcesoEjecucion = '';
-        private $lsIdGedeeProcesoEjecucion = ''; //esto va vacio el valor que tiene es para hacer pruebas
-        //en versiones futuras se podran controlar la cuantia maxima de cada uno de estos datos como control del nucleo sobre la ejecucion de proceso. 
+        private $lsIdGedeeProcesoEjecucion = ''; 
         //arbol de procesos activos por el que trabaja la logica de procesos del nucleo, el primer proceso en actualizar este arbol es el nucleo
         //la esructura de este arreglo es la siguiente
         //array( 0 => array( 'id_proceso'=> valor id_proceso,(string)
@@ -118,8 +117,6 @@
         private $limiteIdorejecRecursivoProImpEjec = -1;
         //es un puntero al arreglo estructura del proceso actual(ejecutandose) y cituada en el arreglo $laArbolProcesos de esta misma clase.
         private $apuntadorProcesoActual      = null;
-        //indica si el bloque appmod se ha ejecutado al menos una ves
-        //private $ejecucion_bloque_fundator = false ;
         //estado de la ejecucion del proceso, admite los siguientes valores inicializado, finalizado , null(cuando no existe ningun proceso ejecutandose)
         private $statuEjecucionProceso       = null;
 
