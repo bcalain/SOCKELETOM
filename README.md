@@ -5,7 +5,7 @@ Licencia GPL3
 
 Versión 1.0.0
 
-Lenguage PHP 5.3 O Superior
+Lenguage PHP 5.3 o Superior
 
 No necesita Gestor de Bases de Datos para su funcionamiento
 
