@@ -2,8 +2,11 @@
 ###Esqueleto con Sockets, como Motor de Códigos PHP en forma de módulos#
 
 Licencia GPL3
+
 Versión 1.0.0
+
 Lenguage PHP 5.3 O Superior
+
 No necesita Gestor de Bases de Datos para su funcionamiento
 
 
