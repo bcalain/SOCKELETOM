@@ -54,53 +54,81 @@
                 switch ( $id_objeto )
                     {
                     case 'EEoNucleo' : if ( $this->EEoNucleo == null )
-                            {
-                            $this->EEoNucleo = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;
+                                          {
+                                             $this->EEoNucleo = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                             if( empty( $this->EEoNucleo ) )
+                            	               {
+                            		              trigger_error("No se pudo referenciar la entidad EEoNucleo en __CLASS__", E_USER_ERROR);
+                            	               }
+                                             return true ;
+                                          }
+                                       break ;
 
                     case 'EEoInterfazDatos' : if ( $this->EEoInterfazDatos == null )
-                            {
-                            $this->EEoInterfazDatos = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;
+                                                 {
+                                                    $this->EEoInterfazDatos = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                                    if( empty( $this->EEoInterfazDatos ) )
+                            	                      {
+                            		                     trigger_error("No se pudo referenciar la entidad EEoInterfazDatos en __CLASS__", E_USER_ERROR);
+                            	                      }
+                                                    return true ;
+                                                 }
+                                              break ;
 
                     case 'EEoSeguridad' : if ( $this->EEoSeguridad == null )
-                            {
-                            $this->EEoSeguridad = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;
+                                             {
+                                                $this->EEoSeguridad = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                                if( empty( $this->EEoSeguridad ) )
+                            	                  {	
+                            		                 trigger_error("No se pudo referenciar la entidad EEoSeguridad en __CLASS__", E_USER_ERROR);
+                            	                  }
+                                                return true ;
+                                             }
+                                          break ;
 
                     case 'EEoConfiguracion' : if ( $this->EEoConfiguracion == null )
-                            {
-                            $this->EEoConfiguracion = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;
+                                                 {
+                                                    $this->EEoConfiguracion = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                                    if( empty( $this->EEoConfiguracion ) )
+                            	                      {
+                            		                     trigger_error("No se pudo referenciar la entidad EEoConfiguracion en __CLASS__", E_USER_ERROR);
+                            	                      }
+                                                    return true ;
+                                                 }
+                                              break ;
 
                     case 'EEoDatos' : if ( $this->EEoDatos == null )
-                            {
-                            $this->EEoDatos = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;
+                                         {
+                                            $this->EEoDatos = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                            if( empty( $this->EEoDatos ) )
+                            	              {
+                            		             trigger_error("No se pudo referenciar la entidad EEoDatos en __CLASS__", E_USER_ERROR);
+                           		              }
+                                            return true ;
+                                         }
+                                      break ;
 
                     case 'EEoImplementacionProcesos' : if ( $this->EEoImplementacionProcesos == null )
-                            {
-                            $this->EEoImplementacionProcesos = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;
+                                                          {
+                                                             $this->EEoImplementacionProcesos = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                                             if( empty( $this->EEoImplementacionProcesos ) )
+                            	                               {
+                            		                              trigger_error("No se pudo referenciar la entidad EEoImplementacionProcesos en __CLASS__", E_USER_ERROR);
+                            	                               }
+                                                             return true ;
+                                                          }
+                                                       break ;
                         
                     case 'EEoErrores' : if ( $this->EEoErrores == null )
-                            {
-                            $this->EEoErrores = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
-                            return true ;
-                            }
-                        break ;     
+                                           {
+                                              $this->EEoErrores = \Emod\Nucleo\CropNucleo::referenciarObjeto( $id_objeto , $class , $namespace ) ;
+                                              if( empty( $this->EEoErrores ) )
+                            	                {
+                            		               trigger_error("No se pudo referenciar la entidad EEoErrores en __CLASS__", E_USER_ERROR);
+                            	                }
+                                              return true ;
+                                           }
+                                        break ;     
                     }
                 }
             return null ;
