@@ -159,7 +159,7 @@
                                      return null ;
                                  }
                          }
-                     elseif( !empty( $La_fich_interfaz['Ls_path_base'] ) )
+                     if( !empty( $La_fich_interfaz['Ls_path_base'] ) )
                          {
                              $La_fich_interfaz['Ls_path_base'] .= '/' ;
                          }
