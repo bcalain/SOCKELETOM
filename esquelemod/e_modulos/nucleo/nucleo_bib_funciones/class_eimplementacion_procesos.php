@@ -345,7 +345,7 @@
             			}
             		return $ejecucion_proceso ;
             		}
-            	trigger_error("El bloque de procesos no tiene valores o el tipo asociado a este dato en __METHOD__" , E_USER_ERROR ) ;
+            	trigger_error('El bloque de procesos no tiene valores o el tipo asociado a este dato ' , E_USER_ERROR ) ;
             }
             
         //(procedimiento que ejecuta el control (scripts principal) de un proceso determinado, y debuelve los datos de interes para el control padre )
@@ -400,7 +400,7 @@
             
             		return $ejecucion_proceso ;
             		}
-            	trigger_error("El bloque de procesos o el id del proceso a ejecutar, no tienen valores o el tipo asociado a estos datos en __METHOD__" , E_USER_ERROR ) ;
+            	trigger_error('El bloque de procesos o el id del proceso a ejecutar, no tienen valores o el tipo asociado a estos datos ' , E_USER_ERROR ) ;
             }
             
         }
