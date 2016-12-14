@@ -41,6 +41,7 @@
         //$La_entidades puede tener valor null en este caso se chequean todas las entidades, o puede ser un arreglo no asociativo donde sus elementos sean strings con el valor de la entidad a chequear, los posibles valores de entidades son 'EEoNucleo','EEoConfiguracion', 'EEoSeguridad', 'EEoDatos', 'EEoInterfazDatos'    
         final private function controlEntidadesNucleo( $La_entidades = null )
             {
+            $this->EEoImplementacionProcesos = $this ;
             if ( $La_entidades == null )
                 {
                 if ( $this->EEoNucleo !== \Emod\Nucleo\CropNucleo::referenciarObjeto( 'EEoNucleo' , 'NucleoControl' , 'Emod\Nucleo' ) )
@@ -203,7 +204,7 @@
             return null ;
             }
 
-        //(funcion que ejecuta los controles y debuelve los datos de interes para el control principal, donde primero se usa esta funcion es en la llamada al proceso configuracion para el cual  el id de proceso es 2 por defecto e el esquelemod, como es 1 para el proceso principal o nucleo )
+        //(funcion que ejecuta los controles y debuelve los datos de interes para el control padre, el proceso raiz o #1 es el proceso principal o nucleo )
         // $Ls_id_control_proceso es el id que tiene cada proceso, los siguientes numeros son reservados para el sistema 1-nucleo_proceso 2-sistem_configuration_process
         // $La_entrada_datos_proceso es una matriz con todos los datos que el proceso necesita para su correcto desempe�o 
         // $La_entrada_datos_proceso[ 'Ls_path_control_script'] es el path hasta el script control que se quiere incluir, tener muy presente que este path tendra como raiz el directorio esquelemod/e_modulos de la estructura de directorios del sistema esquelemod 
@@ -294,6 +295,114 @@
             return $ejecucion_proceso ;
             }
 
+        //(procedimiento que ejecuta los controles(scripts principal) de procesos, y debuelve los datos de interes para el control padre, el proceso raiz o #1 es el proceso principal o nucleo )
+        // $La_bloque_procesos es un arreglo con una llave asociativa de nombre 'procesos' y como valor de esta llave un arreglo con los procesos y sus datos a ejecutar 
+        //este procedimiento toma el parmatro $La_bloque_procesos y lo recorre recursivamente tomando sus valores y pasandolos como parámetros al procedimiento cargaControlProcesos() de esta misma clase
+        //por lo que los valores referentes a los procesos declarados en $La_bloque_procesos deben cumplir con las normas de los parámetros del rocedimiento cargaControlProcesos() de esta misma clase.
+        //este procedimiento retorna el valor de retorno del ultimo proceso ejecutado segun el orden de los procesos en $La_bloque_procesos.
+        final public function ejecutarBloqueProcesos( $La_bloque_procesos )
+            {
+            	if ( !empty( $La_bloque_procesos ) && is_array( $La_bloque_procesos ) )
+            		{
+            		$ejecucion_proceso = NULL ;
+            		foreach ( $La_bloque_procesos['procesos'] as $id_proceso => $valores_proceso )
+            			{
+            			if ( !empty( $valores_proceso ) && is_array( $valores_proceso ) )
+            				{
+            				if ( !empty( $valores_proceso['gedee_proceso'] ) )
+            					{
+            					$Ls_namespace_gedee_proceso_ejecucion = $valores_proceso['gedee_proceso']['namespace'];
+            					$Ls_clase_gedee_proceso_ejecucion     = $valores_proceso['gedee_proceso']['clase'];
+            					$Ls_id_gedee_proceso_ejecucion = $valores_proceso['gedee_proceso']['id_entidad'];
+            					}
+            				else
+            					{
+            					//exit( "<p> ERROR FATAL, procedimiento: " . __METHOD__ . ", no se encontr&oacute; gedee para el proceso $id_proceso " );
+            					trigger_error('No se encontr&oacute; gedee para el proceso '.$id_proceso , E_USER_ERROR ) ;
+            					}
+            
+            				if ( !empty( $valores_proceso['propiedades_implementacion_proceso']['condicion_ejecucion'] ) )
+            					{
+            					$continue  = true;
+            					$condicion = 'if( ' . $valores_proceso['propiedades_implementacion_proceso']['condicion_ejecucion'] . ' )
+												{
+													$continue = false ;
+												}';
+            					eval( $condicion );
+            
+            					if ( $continue == true )
+            						{
+            						continue;
+            						}
+            					}
+            				$ejecucion_proceso = $this->cargaControlProcesos( $id_proceso , $Ls_id_gedee_proceso_ejecucion , $Ls_clase_gedee_proceso_ejecucion , $Ls_namespace_gedee_proceso_ejecucion , $valores_proceso['propiedades_implementacion_proceso'] );
+            				if ( !$ejecucion_proceso )
+            					{
+            					//echo "<p>ADVERTENCIA, El proceso: $id_proceso, de id gedee: $Ls_id_gedee_proceso_ejecucion, clase gedee: $Ls_namespace_gedee_proceso_ejecucion\\$Ls_clase_gedee_proceso_ejecucion no se pudo ejecutar satisfact&oacute;riamente<p>" ;
+            					trigger_error('El proceso: '.$id_proceso.', de id gedee: '.$Ls_id_gedee_proceso_ejecucion.', clase gedee: '.$Ls_namespace_gedee_proceso_ejecucion.'\\'.$Ls_clase_gedee_proceso_ejecucion.' no se pudo ejecutar satisfact&oacute;riamente en '.__CLASS__ , E_USER_WARNING ) ;
+            					}
+            				}
+            			}
+            		return $ejecucion_proceso ;
+            		}
+            	trigger_error("El bloque de procesos no tiene valores o el tipo asociado a este dato en __METHOD__" , E_USER_ERROR ) ;
+            }
+            
+        //(procedimiento que ejecuta el control (scripts principal) de un proceso determinado, y debuelve los datos de interes para el control padre )
+        // $Ls_id_proceso_ejecutar es el identificador o nombre del proceso que se quiere ejecutar, este proceso a ejecutar se busca recursivamente en el arreglo $La_bloque_procesos para tomar los datos correspondientes a la ejecución.
+        // $La_bloque_procesos es un arreglo con una llave asociativa de nombre 'procesos' y como valor de esta llave un arreglo con los procesos y sus datos a ejecutar
+        //este procedimiento toma el parmatro $La_bloque_procesos y lo recorre recursivamente buscando el proceso con id igual al parametro $Ls_id_proceso_ejecutar, para tomar sus valores y pasarlos como parámetros al procedimiento cargaControlProcesos() de esta misma clase
+        //por lo que los valores referentes a los procesos declarados en $La_bloque_procesos deben cumplir con las normas de los parámetros del rocedimiento cargaControlProcesos() de esta misma clase.
+        //este procedimiento retorna el valor de retorno del proceso ejecutado en caso de haber coincidencias con el parámetro  $Ls_id_proceso_ejecutar .
+        final public function ejecutarProcesoBloque( $La_bloque_procesos , $Ls_id_proceso_ejecutar )
+            {
+            	if ( !empty( $La_bloque_procesos ) && is_array( $La_bloque_procesos ) && !empty( $Ls_id_proceso_ejecutar ) )
+            		{
+            		$ejecucion_proceso = NULL ;
+            		foreach ( $La_bloque_procesos['procesos'] as $id_proceso => $valores_proceso )
+            			{
+            			if ( ($id_proceso == $Ls_id_proceso_ejecutar ) && !empty( $valores_proceso ) && is_array( $valores_proceso ) )
+            				{
+            				if ( !empty( $valores_proceso['gedee_proceso'] ) )
+            					{
+            					$Ls_namespace_gedee_proceso_ejecucion = $valores_proceso['gedee_proceso']['namespace'];
+            					$Ls_clase_gedee_proceso_ejecucion     = $valores_proceso['gedee_proceso']['clase'];
+            					$Ls_id_gedee_proceso_ejecucion = $valores_proceso['gedee_proceso']['id_entidad'];
+            					}
+            				else
+            					{
+            					//exit( "<p> ERROR FATAL, procedimiento: " . __METHOD__ . ", no se encontr&oacute; gedee para el proceso $id_proceso " );
+            					trigger_error('No se encontr&oacute; gedee para el proceso '.$id_proceso , E_USER_ERROR ) ;
+            					}
+            
+            				if ( !empty( $valores_proceso['propiedades_implementacion_proceso']['condicion_ejecucion'] ) )
+            					{
+            					$continue  = true;
+            					$condicion = 'if( ' . $valores_proceso['propiedades_implementacion_proceso']['condicion_ejecucion'] . ' )
+												{
+													$continue = false ;
+												}' ;
+            					eval( $condicion );
+            
+            					if ( $continue == true )
+            						{
+            						continue;
+            						}
+            					}
+            				$ejecucion_proceso = $this->cargaControlProcesos( $id_proceso , $Ls_id_gedee_proceso_ejecucion , $Ls_clase_gedee_proceso_ejecucion , $Ls_namespace_gedee_proceso_ejecucion , $valores_proceso['propiedades_implementacion_proceso'] );
+            				if ( !$ejecucion_proceso )
+            					{
+            					//echo "<p>ADVERTENCIA, El proceso: $id_proceso, de id gedee: $Ls_id_gedee_proceso_ejecucion, clase gedee: $Ls_namespace_gedee_proceso_ejecucion\\$Ls_clase_gedee_proceso_ejecucion no se pudo ejecutar satisfact&oacute;riamente<p>" ;
+            					trigger_error('El proceso: '.$id_proceso.', de id gedee: '.$Ls_id_gedee_proceso_ejecucion.', clase gedee: '.$Ls_namespace_gedee_proceso_ejecucion.'\\'.$Ls_clase_gedee_proceso_ejecucion.' no se pudo ejecutar satisfact&oacute;riamente en '.__CLASS__ , E_USER_WARNING ) ;
+            					}
+            				}
+            			}
+            
+            		return $ejecucion_proceso ;
+            		}
+            	trigger_error("El bloque de procesos o el id del proceso a ejecutar, no tienen valores o el tipo asociado a estos datos en __METHOD__" , E_USER_ERROR ) ;
+            }
+            
         }
 
 ?>
