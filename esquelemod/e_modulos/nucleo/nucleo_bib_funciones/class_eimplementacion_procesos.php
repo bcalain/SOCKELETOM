@@ -354,7 +354,7 @@
         //este procedimiento toma el parmatro $La_bloque_procesos y lo recorre recursivamente buscando el proceso con id igual al parametro $Ls_id_proceso_ejecutar, para tomar sus valores y pasarlos como parámetros al procedimiento cargaControlProcesos() de esta misma clase
         //por lo que los valores referentes a los procesos declarados en $La_bloque_procesos deben cumplir con las normas de los parámetros del rocedimiento cargaControlProcesos() de esta misma clase.
         //este procedimiento retorna el valor de retorno del proceso ejecutado en caso de haber coincidencias con el parámetro  $Ls_id_proceso_ejecutar .
-        final public function ejecutarProcesoBloque( $La_bloque_procesos , $Ls_id_proceso_ejecutar )
+        final public function ejecutarProcesoBloque( $Ls_id_proceso_ejecutar , $La_bloque_procesos )
             {
             	if ( !empty( $La_bloque_procesos ) && is_array( $La_bloque_procesos ) && !empty( $Ls_id_proceso_ejecutar ) )
             		{
