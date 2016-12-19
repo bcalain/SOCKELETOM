@@ -42,6 +42,8 @@
 #
  sistema: 
           #Propiedades del sistema o proceso nucleo
+          propiedades_servidor_hospedero:
+                                          nombre_dominio_web:
           propiedades_proceso: 
                                version_sistema: 1.0.0
                                id_proceso: NucleoEsquelemod
