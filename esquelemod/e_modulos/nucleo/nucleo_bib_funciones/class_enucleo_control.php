@@ -46,6 +46,9 @@
         //protected $EEoImplementacionProcesos = null ;
         //protected $EEoErrores = null ;
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        ////////////////////////////////////////Propiedades respectivos al servidor web hospedero//////////////////////////////////////////////////
+        //Nombre de dominio web del servidor que hospeda al sistema Sockeletom
+        private $lsNombreDominioWeb = '';
         ////////////////////////////////////////Propiedades respectivos al objeto nucleo//////////////////////////////////////////////////
         //es el identificador del proceso nucleo en las estructuras de datos de los objetos del nuceo como son, objeto seguridad, contenedor datos, configuracion etc
         private $lsIdProcesoNucleo             = 'NucleoEsquelemod';
@@ -282,7 +285,16 @@
                         }
                     
                     //seccion para iniciar y actualizar la configuracion del sistema o proceso nucleo 
-
+                    if ( !empty( $datos_configuracion['sistema']['propiedades_servidor_hospedero']['nombre_dominio_web'] ) )
+                        {
+                        	$this->lsNombreDominioWeb= $datos_configuracion['sistema']['propiedades_servidor_hospedero']['nombre_dominio_web'];
+                        }
+                    else
+                        {
+                        	//tomarlo de $_SERVER
+                        	$this->lsNombreDominioWeb = $_SERVER['SERVER_NAME'];
+                        }
+                         
                     if ( !empty( $datos_configuracion['sistema']['propiedades_proceso']['id_proceso'] ) && !empty( $datos_configuracion['sistema']['propiedades_proceso']['namespace_gedee'] ) && !empty( $datos_configuracion['sistema']['propiedades_proceso']['clase_gedee'] ) && !empty( $datos_configuracion['sistema']['propiedades_proceso']['id_gedee'] ) )
                         {
                         
@@ -902,7 +914,13 @@
                 }
             return null;
             }
-
+        
+        //debuelve el valor del Nombre del Dominio WEB del servidor hospedero
+        public function nombreDominioWeb()
+            {
+            	return $this->lsNombreDominioWeb ;
+            }
+        
         //debuelve el valor del path del dierectorio raiz del proceso en ejecucion 	
         public function pathDirRaizProcesoEjecucion()
             {
