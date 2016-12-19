@@ -46,6 +46,10 @@ $datos =array (
   ),
   'sistema' => 
   array (
+    'propiedades_servidor_hospedero' => 
+    array (
+      'nombre_dominio_web' => '',
+    ),
     'propiedades_proceso' => 
     array (
       'version_sistema' => '1.0.0',
@@ -287,7 +291,10 @@ $datos =array (
   'procesos' => 
   array (
     'path_raiz_procesos' => 'procesos',
-    'orden_permiso_ejecucion_bloques' => '',
+    'orden_permiso_ejecucion_bloques' => 
+    array (
+      0 => 'bloque_defecto',
+    ),
     'arbol_procesos' => 
     array (
       'limite_idorejec_global' => -1,
