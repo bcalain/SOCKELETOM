@@ -124,7 +124,7 @@
 			  
              
 		   
-             final public function gestionEjecucionInterfazSalida ( $Ls_identificativo , $La_fich_interfaz , $La_fich_datos = null , $Ls_pathdir_cache = 'hereda' )
+             final public function gestionEjecucionInterfazSalida ( $Ls_identificativo , $La_fich_interfaz , $La_fich_datos = null , $Ls_pathdir_cache = 'hereda' , $La_datos_complementarios = NULL  )
                  {  
                      
                      //////////iniciacion de variables////////////
@@ -178,7 +178,9 @@
                          {
                              $La_fich_datos['Ls_path_base'].='/' ;
                          }
-                     
+                     else{
+                         	$La_fich_datos['Ls_path_base'] = '' ;
+                         }
 					 
                      if ( $Ls_pathdir_cache == 'hereda' )
                          {
