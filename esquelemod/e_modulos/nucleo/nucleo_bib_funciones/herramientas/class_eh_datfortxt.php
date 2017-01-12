@@ -173,11 +173,16 @@
         //$Ls_path_fich es el path del fichero txt al que se hara el filtrado
         //$Ls_llave_unica define una llave de las contenidas en el arreglo $La_estructura_filtro como condicion para que cuando esta llave y su valor sean encontrados en la linea del txt, se detenga la busqueda por las lineas restantes del fichero, es decir se detenga el proceso de filtrado y se pase al termino de la gestion de este procedimiento
         //si su valor es vacio no se tomara en cuenta como condicion, esta llave puede estar sola o acompanada de otras en $La_estructura_filtro
+        //$tipo_retorno es el tipo de dato y la estructura del dato que va a retornar este procedimiento
+        //este parametro tien tres posibles valores 1-'txt' 2-'array' 3-'array_key_valor' mas adelante en la explicacion de retornos de este procedimiento se explica cada tipo de retorno
         //este procedimiento retorna
-        //retorna arreglo no asociativo donde cada uno de sus elementos contendra como valor un string que seran las lineas del txt que coincidieron con el filtrado
-        //retorna null si se le pasan valores incompatibles a los parametros del procedimiento,o si no encuentra elemento al que aplicar la condicion de filtrado
+        //el retorno de este procedimiento esta condicionado por el parametro $tipo_retorno donde:
+        //si $tipo_retorno = 'txt', este procedimiento retorna un arreglo no asociativo donde cada uno de sus elementos contendra como valor un string que seran las lineas del txt que coincidieron con el filtrado
+        //si $tipo_retorno = 'array', este procedimiento retorna un arreglo no asociativo donde cada uno de sus elementos contendra un arreglo no asociativo que a la vez contendra en sus elementos las secciones de la linea txt que coincidieron con el filtrado, las secciones estaran en el mismo orden en que aparecen en el txt.
+        //si $tipo_retorno = 'array_key_valor', este procedimiento retorna un arreglo no asociativo donde cada uno de sus elementos contendra un arreglo asociativo que a la vez contendrá en sus elementos las secciones de la línea txt que coincidieron con el filtrado, los elementos del arreglo asociativo seran los pares clave valor que se forman al fucionar el paramtro $La_estructura_llaves_base con los segmentos de linea del txt, estos pares estaran en el mismo orden en que aparecen en el txt las correspondientes secciones.
+        //retorna null si se le pasan valores incompatibles a los parametros del procedimiento, o si no encuentra elemento al que aplicar la condicion de filtrado
 
-        public static function filtrarLeerLineaDatos( $La_estructura_llaves_base, $La_estructura_filtro, $Ls_separador, $Ls_path_fich, $Ls_llave_unica = null )
+        public static function filtrarLeerLineaDatos( $La_estructura_llaves_base, $La_estructura_filtro, $Ls_separador, $Ls_path_fich, $Ls_llave_unica = null , $tipo_retorno = 'txt' )
         {
             if ( !is_array($La_estructura_llaves_base) || empty($La_estructura_llaves_base) || !is_array($La_estructura_filtro) || empty($La_estructura_filtro) || empty($Ls_separador) || empty($Ls_path_fich) )
             {
@@ -225,11 +230,22 @@
                         }
                         if ( $condicion2 )
                         {
-                            $La_datos_result[] = $Ls_buffer ;
-                            if ( $fin_filtrado )
-                            {
-                                break ;
-                            }
+                        	if ( $tipo_retorno == 'txt' )
+                        	{
+                        		$La_datos_result[] = $Ls_buffer ;
+                        	}
+                        	elseif ($tipo_retorno == 'array')
+                        	{
+                        		$La_datos_result[] = $La_buffer ;
+                        	}
+                        	elseif ($tipo_retorno == 'array_key_valor')
+                        	{
+                        		$La_datos_result[] = $La_miembro_valor ;
+                        	}
+                        	if ( $fin_filtrado )
+                        	{
+                        		break ;
+                        	}
                         }
                     }
                 }
