@@ -1,0 +1,157 @@
+/*
+Theme Name: Theme3
+Theme URI: 
+Description: Sockeletom Theme
+Version: 1.0
+Author: Equipo Sockeletom
+Author URI: www.sockeletom.com
+Tags: fixed-width, left-sidebar, two-columns, valid HTML5, valid XHTML, widgets
+*/
+
+body
+{
+    font-size: 13px;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 8%;
+    border-width: 1px;
+    border-style: ridge;
+    border-color: activecaption;
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+
+    color: steelblue;
+    margin: 0px;
+}
+
+h5.ayuda{
+    font-style: normal; 
+    font-weight: lighter;
+    font-family: serif sans-serif;
+    font-size: small;
+    margin-left: 0px;
+    color: #333; 
+}
+
+label.milabel{
+    font-style: normal; 
+    font-weight: lighter;
+    font-size: x-small;
+    margin-left: 2px;
+    color: cadetblue;
+
+}
+label{
+    font-style: normal; 
+    font-weight: lighter;
+    font-size: medium;
+    margin-left: 5px;
+    color: cadetblue;
+
+}
+
+label.titulo{
+    font-style: normal;  
+    margin-left: 5px;
+    color: cadetblue;
+    font-weight: bold;
+    font-size: medium;
+}
+
+input.kaka{
+    border-style: solid;
+    border-width: 1px;
+    width: 300px;
+    border-color: threedlightshadow;
+    height: 20px;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    padding-left: 5px;
+}
+
+td.comentario{
+    background-color: lavender;
+    height: 30px;
+}
+
+td.seccion{
+    border-top-style: none;
+    border-top-color: activecaption;
+    border-top-width: 1px;
+    border-top-color: appworkspace;
+
+}
+
+td.panel{
+    padding-bottom: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+a{
+    text-decoration: cadetblue;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    text-decoration-skip: ink;
+}
+
+div.msg{
+    width: 100%;
+    border-style: groove;
+    border-width: thin;
+    border-color: lightgreen;
+    text-align: center;
+    height: 30px;
+    vertical-align: middle;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    font-size: large;
+    color: seagreen;
+    background-color: lightgreen;
+}
+
+div.add{
+    width: 100%;
+    border-style: groove;
+    border-width: thin;
+    border-color: lightgreen;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    background-color: palegreen;
+}
+
+input.add{
+    border-style: solid;
+    border-width: 1px;
+    width: 250px;
+    border-color: threedlightshadow;
+    height: 20px;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    padding-left: 5px;
+    font-style: italic;
+    color: grey;
+}
+
+div.contenedor{
+    width: 250px;
+}
+
+input.addsection{
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    border-color: threedlightshadow;
+    height: 20px;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    padding-left: 5px;
+    font-style: italic;
+    color: grey;
+}
+
+td.addsection{
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, Sans-Serif;
+    font-size: 12px;
+}
