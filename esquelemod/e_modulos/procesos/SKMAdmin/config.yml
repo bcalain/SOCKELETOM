@@ -1,3 +1,11 @@
 ## YAML Template.
 ---
-version: "0.6 (beta)"
+version: "0.8 (beta)"
+plugins:
+    - plugin1:
+        - path: ""
+        - activo: true
+    - plugin2:
+        - path: ""
+        - activo: true
+        

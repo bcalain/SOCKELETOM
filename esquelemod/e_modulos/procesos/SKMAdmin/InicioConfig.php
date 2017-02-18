@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Contiene el menu principal
 -->
 <?php
 $path2load = 'esquelemod/e_modulos/procesos/' . $this->EEoNucleo->pathDirRaizProcesoEjecucion() . '/';
@@ -13,6 +11,7 @@ require $path2loadAbs.'root/ChequeoSesion.php';
 require_once $path2loadEsquelemod . 'e_modulos/nucleo/nucleo_bib_funciones/herramientas/spyc.php';
 
 require_once $path2loadAbs . 'class/class_PathBootstrap.php';
+
 
 // Control del tab seleccionado
 $arrayTab[] = array();
@@ -60,7 +59,7 @@ $datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_siste
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li <?php echo $arrayTab[0] ?>><a href="?app=inicioconfig&tab=0">Inicio</a></li>
+                    <li <?php echo $arrayTab[0] ?>><a href="?app=inicioconfig&tab=0&fs=inicio">Inicio</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuraci&oacute;n principal <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -109,6 +108,7 @@ $datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_siste
                     break;
             }
         }
+        include $path2loadAbs . 'root/ModalWindows.php';
         ?>
 
 </html>

@@ -42,7 +42,7 @@ if(file_exists($path2loadAbs."passwd")){
                 file_put_contents($path2loadAbs."tmp/".session_id(), session_id()."||".$_SESSION['SessionIP']."||".$_SESSION['SessionUser'],LOCK_EX);
 
                 if ($_SESSION['SessionUser'] == "root") {
-                    header('Location: ?app=inicioconfig&tab=0');
+                    header('Location: ?app=inicioconfig&tab=0&fs');
                 }
                 die();
             }else{
@@ -56,4 +56,3 @@ if(file_exists($path2loadAbs."passwd")){
 }else{
     die("No se puede comprobar su nombre de usuario y contraseña");
 }
-
