@@ -16,6 +16,8 @@ class class_SessionControl
         $this->path2loadAbs = $path2load;
     }
 
+    // --------------------------------------------------------------------
+    
     /**
      * Función para comprobar el estado de la sesión.
      * Devuelve bool
@@ -32,6 +34,8 @@ class class_SessionControl
         return false;
     }
 
+    // --------------------------------------------------------------------
+    
     /**
      * Borrar fichero temporal para el control de la sesión
      */
@@ -42,6 +46,8 @@ class class_SessionControl
         }
     }
 
+    // --------------------------------------------------------------------
+    
     /*
      * Comprobar IP contra id de sesión
      * Devuelve TRUE o FALSE
