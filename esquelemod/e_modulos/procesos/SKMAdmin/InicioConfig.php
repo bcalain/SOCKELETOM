@@ -66,11 +66,10 @@ $datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_siste
                         <ul class="dropdown-menu">
                             <li><a href="?app=inicioconfig&tab=1&fs=sistema">Valores del sistema</a></li>
                             <li><a href="?app=inicioconfig&tab=1&fs=herramientas">Valores referentes a Herramientas</a></li>
-                            <li><a href="#">Valores referentes a Utiles</a></li>
-                            <li><a href="#">Tratamiento de errores</a></li>
+                            <li class="disabled"><a href="#">Valores referentes a Utiles</a></li>
+                            <li class="disabled"><a href="#">Tratamiento de errores</a></li>
                             <li><hr></li>
                             <li><a href="#">Valores referentes a bloques de procesos</a></li>
-
                         </ul>
                     </li>        
                     <li <?php echo $arrayTab[2] ?>><a href="?app=inicioconfig&tab=2">Usuarios</a></li>
