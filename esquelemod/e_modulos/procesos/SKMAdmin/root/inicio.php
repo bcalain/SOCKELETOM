@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Muestra la lista de procesos y herramientas en Inicio
 -->
 <?php
 /**
@@ -10,6 +8,13 @@ and open the template in the editor.
  */
 $readDir = 'esquelemod/e_modulos/procesos/';
 $arrayDir = scandir($readDir);
+################3
+//$running = $this->EEoNucleo->accederHistorialArbolProcesos();
+
+/* $contenidoFichPHP = "<?php \n" . '$datos = ' . var_export($running, true) . "\n?>";
+  //file_put_contents("d:/TMP/procesos_ejecutados.php", $contenidoFichPHP);
+  //die(); */
+######################3
 ?>
 <div class="table-responsive">
     <table class="table">
@@ -21,10 +26,25 @@ $arrayDir = scandir($readDir);
                             <h3 class="panel-title"><label class="">Procesos del sistema</label>        
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="#myModal" data-toggle="modal" title="Listar/Configurar procesos">
+                                                <span class="glyphicon glyphicon-list-alt"></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>&numsp; </li>
+                                    <li>
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="#myModal" data-toggle="modal" title="Ayuda">
+                                                <span class="glyphicon glyphicon-question-sign"></span> 
+                                            </a>
+                                        </div>
+                                    </li> 
+                                    <!--<li>
                                         <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalHelp">
                                             <span class="glyphicon glyphicon-question-sign"></span> Ayuda
                                         </button>
-                                    </li>
+                                    </li>-->
 
                                 </ul>
                             </h3>
@@ -57,7 +77,7 @@ $arrayDir = scandir($readDir);
                                                 </a>
                                             </td>
                                             <td align=""> <!-- Editar configuración de un proceso -->
-                                                <a href="#myModal" data-toggle="modal" title="Editar configuraci&oacute;n">
+                                                <a href="" data-toggle="modal" data-target="#myModalAgregar" title="Editar configuraci&oacute;n">
                                                     <span class="glyphicon glyphicon-pencil"></span> 
                                                 </a>
                                             </td>
@@ -91,10 +111,33 @@ $arrayDir = scandir($readDir);
                             <h3 class="panel-title"><label class="">Herramientas del sistema</label>        
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalHelp">
-                                            <span class="glyphicon glyphicon-question-sign"></span> Ayuda
-                                        </button>
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="?app=inicioconfig&tab=1&fs=herramientas" data-toggle="modal" title="Listar/Configurar herramientas">
+                                                <span class="glyphicon glyphicon-list-alt"></span>
+                                            </a>
+                                        </div>
                                     </li>
+                                    <li>&numsp;  </li>
+                                    <li>
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="#myModal" data-toggle="modal" title="Ayuda">
+                                                <span class="glyphicon glyphicon-question-sign"></span> 
+                                            </a>
+                                        </div>
+                                    </li>
+                                   <!-- <li>
+                                        <div class="btn-group btn-group-xs">
+                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalHelp">
+                                                <span class="glyphicon glyphicon-pencil"></span> Editar
+                                            </button>
+                                        </div>
+                                    </li>                                    
+                                    <li>
+                                        <div class="btn-group btn-group-xs">
+                                            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalHelp">
+                                                <span class="glyphicon glyphicon-question-sign"></span> Ayuda
+                                            </button></div>
+                                    </li>    -->                                
 
                                 </ul>
                             </h3>
@@ -107,7 +150,13 @@ $arrayDir = scandir($readDir);
                                 <th align="">Descargar</th>
                                 </thead>
                                 <?php
-                                foreach ($datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'] as $key => $tool) {
+                                foreach ($datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'] as $key => $tool) 
+                                {
+                                    $urlConfigTool = '?app=inicioconfig&tab=1&fs=editherramienta'.
+                                            '&tool='.$key.
+                                            '&entidad='.$datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'][$key]['path_entidad_clase'].
+                                            '&referencia='.$datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'][$key]['referencia_path_entidad'].
+                                            '&tipo='.$datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'][$key]['tipo_entidad'];
                                     ?>
 
                                     <tr>
@@ -118,8 +167,8 @@ $arrayDir = scandir($readDir);
                                                 <span class="glyphicon glyphicon-play"></span> 
                                             </a>
                                         </td>
-                                        <td align=""> <!-- Editar configuración de un proceso -->
-                                            <a href="#myModal" data-toggle="modal" title="Editar configuraci&oacute;n">
+                                        <td align=""> <!-- Editar configuración de una herramienta -->
+                                            <a href="<?php echo $urlConfigTool ?>">
                                                 <span class="glyphicon glyphicon-pencil"></span> 
                                             </a>
                                         </td>

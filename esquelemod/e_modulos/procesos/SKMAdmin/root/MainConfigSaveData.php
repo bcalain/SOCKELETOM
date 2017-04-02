@@ -1,14 +1,22 @@
 <?php
 $path2loadEsquelemod = $this->EEoNucleo->pathDirEsquelemod() . '/';
+$path2loadAbs = $this->EEoNucleo->pathAbsolutoDirRaizProcesoEjecucion() . '/';
+
 require_once $path2loadEsquelemod . 'e_modulos/nucleo/nucleo_bib_funciones/herramientas/spyc.php';
-$datosOriginal = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod . 'e_sistema/e_sistema_config.cnf', true);
+require_once $path2loadAbs . '../class/class_Validar.php';
+
 
 /*
   $contenidoFichPHP = "<?php \n" . '$datos = ' . var_export($datosOriginal['herramientas']['existentes_sistema'], true) . "\n?>";
   //file_put_contents("d:/TMP/original.php", $contenidoFichPHP);
   //die();
  */
-if (is_array($_POST['datos'])) {
+if (is_array($_POST['datos'])) 
+{
+    $datosOriginal = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod . 'e_sistema/e_sistema_config.cnf', true);
+
+    $obj = new class_Validar();
+    //$datosModificado = $obj->htmlentitiesGetPost($_POST);
     $datosModificado = $_POST['datos'];
 
     // Comprobaciones adicionales
@@ -17,6 +25,7 @@ if (is_array($_POST['datos'])) {
             // La sessión de configuración del sistema no requiere comprobaciones adicionales
 
             break;
+        
         case 'herramientas':
             // Si se agrega una nueva herramienta
             if (isset($_POST['datosAddHerramienta']) && $_POST['datosAddHerramienta'] != "") {
@@ -47,6 +56,24 @@ if (is_array($_POST['datos'])) {
             }
 
             break;
+            
+        case 'editherramienta':
+            // Si se escoge la opcion "Edicion de Herramientas de SKM"
+            // Comprobamos que el dato exista.
+            if(!$obj->required($datosModificado['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas']['Spyc']['path_entidad_clase'])){
+                $success = FALSE;
+                continue;
+            }
+            
+            //var_dump($datosModificado['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas']['Spyc']['path_entidad_clase']);
+            
+            /*$contenidoFichPHP = "<?php \n" . '$datos = ' . var_export($datosModificado, true) . "\n?>";
+            //file_put_contents("d:/TMP/datosModificado.php", $contenidoFichPHP);
+            //die();*/
+            
+
+            break;
+            
         default:
             break;
     }
@@ -92,6 +119,9 @@ switch ($_GET['seccion']) {
     case 'herramientas':
         header('Location: ?app=inicioconfig&tab=1&fs=herramientas&success=' . $success);
 
+        break;
+    case 'editherramienta':
+        header('Location: ?app=inicioconfig&tab=0&fs=inicio&success=' . $success);
     default:
         break;
 }

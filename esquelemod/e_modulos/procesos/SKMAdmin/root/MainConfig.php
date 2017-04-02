@@ -1,7 +1,7 @@
 <?php
 /*
-  SKM Admin Herramienta para la configuraciÃ³n de SOCKELETOM (SKM)
-  Copyright (C) 2016  Oscar Luis Inguanzo MartÃ­nez
+  SKM Admin Herramienta para la configuracion de SOCKELETOM (SKM)
+  Copyright (C) 2016  Oscar Luis Inguanzo Martinez
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,12 +18,15 @@
 
   email-contact oscarlim@nauta.cu
  */
+/*
+  Muestra Valores del sistema, Valores de herramientas,
+ */
 ?>
 <?php
 /**
  * Chequeo de sesion
  */
-require $path2loadAbs.'root/ChequeoSesion.php';
+require $path2loadAbs . 'root/ChequeoSesion.php';
 
 $fs = $_GET['fs'];
 switch ($fs) {
@@ -39,7 +42,14 @@ switch ($fs) {
         $tituloFrm = 'Valores referentes a Herramientas de SKM';
         $getVar = 'herramientas';
         $MostrarBtnAdd = true;
-        
+
+        break;
+    case "editherramienta":
+        $bloqueIncluir = $path2loadAbs . 'root/MainConfigEditHerramienta.php';
+        $tituloFrm = 'Edici&oacute;n de herramientas de SKM';
+        $getVar = 'editherramienta';
+        $MostrarBtnAdd = false;
+
         break;
     default:
         break;
@@ -72,16 +82,21 @@ switch ($fs) {
                         <h3 class="panel-title"><label class=""><?php echo $tituloFrm; ?></label>        
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <?php if($MostrarBtnAdd){ ?>
-                                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalAgregar">
-                                        <span class="glyphicon glyphicon-plus"></span> Agregar
-                                    </button>
-                                    <?php } ?>
+                                    <div class="btn-group btn-group-xs">
+                                        <?php if ($MostrarBtnAdd) { ?>
+                                            <a href="#myModalAgregar" data-toggle="modal" title="Agregar nuevo">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </a>
+                                        <?php } ?>
+                                    </div>
                                 </li>
+                                <li>&numsp; </li>
                                 <li>
-                                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalHelp">
-                                        <span class="glyphicon glyphicon-question-sign"></span> Ayuda
-                                    </button>
+                                    <div class="btn-group btn-group-xs">
+                                        <a href="#myModalHelp" data-toggle="modal" title="Ayuda">
+                                            <span class="glyphicon glyphicon-question-sign"></span> 
+                                        </a>
+                                    </div>
                                 </li>
 
                             </ul>
