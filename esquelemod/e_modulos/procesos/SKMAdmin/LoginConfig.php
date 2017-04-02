@@ -65,7 +65,8 @@ $datosConfig = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadAbs . 'config.
         <table border="0" align="center">
             <tr><td>
                     <div class="contenedor">
-                        <h3 class="form-signin-heading" align="center">SKM Admin</h3>
+
+                        <h3 class="form-signin-heading" align="center"><img src="<?php echo $path2load ?>img/SKMAdmin.jpg" alt="SKMAdmin"/></h3>
                         <form class="form-signin" action="?app=chklogin" method="post">
                             <div class="panel panel-default">
                                 <div class="panel-body">

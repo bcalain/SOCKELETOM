@@ -11,7 +11,7 @@ require $path2loadAbs.'root/ChequeoSesion.php';
 require_once $path2loadEsquelemod . 'e_modulos/nucleo/nucleo_bib_funciones/herramientas/spyc.php';
 
 require_once $path2loadAbs . 'class/class_PathBootstrap.php';
-
+require_once $path2loadAbs . 'class/class_Validar.php';
 
 // Control del tab seleccionado
 $arrayTab[] = array();
@@ -38,7 +38,8 @@ $datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_siste
         <script src="<?php echo $pathRelBootstrap ?>/bootstrap/assets/js/jquery.js"></script>
         <script src="<?php echo $pathRelBootstrap ?>/bootstrap/dist/js/bootstrap.min.js"></script>
         <div >
-            <h3>SKM. <small>Administraci&oacute;n del sistema</small></h3>
+            <!--<h3>SKM. <small>Administraci&oacute;n del sistema</small></h3>-->
+            <img src="<?php echo $path2load ?>img/SKMAdmin.jpg" alt="SKMAdmin"/>
         </div>
 
         <nav class="navbar navbar-default" role="navigation">
@@ -85,7 +86,7 @@ $datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_siste
                 </form> 
                 -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="?app=config&log=out" class="navbar-link">Cerrar sesi&oacute;n</a></li>
+                    <li><a href="?app=config&log=out" class="navbar-link"><span class="glyphicon glyphicon-log-out">&numsp;&numsp;</span>Cerrar sesi&oacute;n</a></li>
                 </ul>
 
             </div><!-- /.navbar-collapse -->
