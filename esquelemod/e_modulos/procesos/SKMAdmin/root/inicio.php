@@ -56,8 +56,8 @@ $arrayDir = scandir($readDir);
                                 <thead>
                                 <th align="center">Nombre</th>
                                 <th align="center">Estado</th>
-                                <th align="center">Estructura</th>
-                                <th align="center"></th>
+                                <!--<th align="center">Estructura</th>-->
+                                <!--<th align="center"></th>-->
                                 <th align="center"></th>
                                 <th align="center"></th>
                                 <th align="center"></th>
@@ -70,11 +70,11 @@ $arrayDir = scandir($readDir);
                                         <tr>
                                             <td align=""><span class="glyphicon glyphicon-cog"></span> <?php echo $nombreDir ?></td>
                                             <td align="">Corriendo...</td>
-                                            <td align="">Estructura</td>
-                                            <td align=""> <!-- Play/Pause a los procesos -->
+                                           <!-- <td align="">Estructura</td> -->
+                                           <!-- <td align=""> <!-- Play/Pause a los procesos 
                                                 <a href="#myModal" data-toggle="modal" title="Pausa">
                                                     <span class="glyphicon glyphicon-play"></span> 
-                                                </a>
+                                                </a>-->
                                             </td>
                                             <td align=""> <!-- Editar configuración de un proceso -->
                                                 <a href="" data-toggle="modal" data-target="#myModalAgregar" title="Editar configuraci&oacute;n">
@@ -148,6 +148,9 @@ $arrayDir = scandir($readDir);
                                 <thead>
                                 <th align="">Nombre</th>
                                 <th align="">Descargar</th>
+                                <th align=""></th>
+                                <th align=""></th>
+                                <th align=""></th>
                                 </thead>
                                 <?php
                                 foreach ($datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'] as $key => $tool) 
@@ -162,11 +165,11 @@ $arrayDir = scandir($readDir);
                                     <tr>
                                         <td align=""><span class="glyphicon glyphicon-wrench"></span> <?php echo $key ?></td>
                                         <td align="">Corriendo...</td>
-                                        <td align=""> <!-- Play/Pause a los procesos -->
+                                        <!--<td align=""> <!-- Play/Pause a los procesos 
                                             <a href="#myModal" data-toggle="modal" title="Pausa">
                                                 <span class="glyphicon glyphicon-play"></span> 
                                             </a>
-                                        </td>
+                                        </td>-->
                                         <td align=""> <!-- Editar configuración de una herramienta -->
                                             <a href="<?php echo $urlConfigTool ?>">
                                                 <span class="glyphicon glyphicon-pencil"></span> 
