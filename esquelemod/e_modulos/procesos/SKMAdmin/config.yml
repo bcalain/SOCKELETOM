@@ -1,6 +1,6 @@
 ## YAML Template.
 ---
-version: "0.10 (beta)"
+version: "0.11 (beta)"
 plugins:
     - plugin1:
         - path: ""
@@ -8,4 +8,12 @@ plugins:
     - plugin2:
         - path: ""
         - activo: true
-        
+# 
+# Longitud de los botones que muestran los bloques de procesos.
+# Menu 'Configuracion Principal/Valores referentes a bloques de procesos'
+#
+btn_longitud: 20
+#
+# Cantidad de menus desplegables del menu principal, comenzando en 0.
+#
+cant_menu: 3

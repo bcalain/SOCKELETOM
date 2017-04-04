@@ -13,15 +13,27 @@ require_once $path2loadEsquelemod . 'e_modulos/nucleo/nucleo_bib_funciones/herra
 require_once $path2loadAbs . 'class/class_PathBootstrap.php';
 require_once $path2loadAbs . 'class/class_Validar.php';
 
+
+// Leemos config del sistema SKM
+$datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_sistema/e_sistema_config.cnf', false);
+// Leemos config del sistema SKMAdmin
+$datosConfig = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadAbs . 'config.yml', false);
+
+
 // Control del tab seleccionado
 $arrayTab[] = array();
 if (isset($_GET['tab'])) {
     $selectTab = filter_input(INPUT_GET, 'tab', FILTER_SANITIZE_SPECIAL_CHARS);
-    $arrayTab[$selectTab] = 'class="active"';
+
+    for ($i = 0; $i <= $datosConfig['cant_menu']; $i++) {
+        if ($i == $selectTab) {
+            $arrayTab[$i] = 'class="active"';
+        } else {
+            $arrayTab[$i] = '';
+        }
+    }
 }
 
-// Leemos config del sistema
-$datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_sistema/e_sistema_config.cnf', false);
 
 ?>
 
@@ -69,7 +81,7 @@ $datos = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadEsquelemod .'e_siste
                             <li class="disabled"><a href="#">Valores referentes a Utiles</a></li>
                             <li class="disabled"><a href="#">Tratamiento de errores</a></li>
                             <li><hr></li>
-                            <li><a href="#">Valores referentes a bloques de procesos</a></li>
+                            <li><a href="?app=inicioconfig&tab=1&fs=bprocesos">Valores referentes a bloques de procesos</a></li>
                         </ul>
                     </li>        
                     <li <?php echo $arrayTab[2] ?>><a href="?app=inicioconfig&tab=2">Usuarios</a></li>
