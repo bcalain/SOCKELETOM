@@ -20,7 +20,8 @@ if (is_array($_POST['datos']))
     $datosModificado = $_POST['datos'];
 
     // Comprobaciones adicionales
-    switch ($_GET['seccion']) {
+    switch ($_GET['seccion']) 
+    {
         case 'sistema':
             // La sessión de configuración del sistema no requiere comprobaciones adicionales
 
@@ -64,27 +65,23 @@ if (is_array($_POST['datos']))
                 $success = FALSE;
                 continue;
             }
-            
-            //var_dump($datosModificado['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas']['Spyc']['path_entidad_clase']);
-            
-            /*$contenidoFichPHP = "<?php \n" . '$datos = ' . var_export($datosModificado, true) . "\n?>";
-            //file_put_contents("d:/TMP/datosModificado.php", $contenidoFichPHP);
-            //die();*/
-            
+            break;
+        
+        case 'bloquesprocesos':
+            var_dump($_POST['datos']);
 
             break;
-            
         default:
             break;
     }
-
+    
     $arrayResult = array_replace_recursive($datosOriginal, $datosModificado);
 
     if ($arrayResult != $datosOriginal) {
         $structYaml = \Emod\Nucleo\Herramientas\Spyc::YAMLDump($arrayResult, 4);
 
         // Despues de guardada la conf tomamos T o F para pasarlo hacia InicioConfig
-        $success = (file_put_contents($path2loadEsquelemod . 'e_sistema/e_sistema_config.cnf', $structYaml)) ? true : false;
+        $success = (\file_put_contents($path2loadEsquelemod . 'e_sistema/e_sistema_config.cnf', $structYaml)) ? true : false;
     }
 } else {
     $success = false;
@@ -122,6 +119,12 @@ switch ($_GET['seccion']) {
         break;
     case 'editherramienta':
         header('Location: ?app=inicioconfig&tab=0&fs=inicio&success=' . $success);
+        
+        break;
+    case 'bloquesprocesos':
+        header('Location: ?app=inicioconfig&tab=1&fs=bprocesos&success=' . $success);
+        
+        break;
     default:
         break;
 }

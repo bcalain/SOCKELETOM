@@ -19,7 +19,7 @@
   email-contact oscarlim@nauta.cu
  */
 /*
-  Muestra Valores del sistema, Valores de herramientas,
+  Muestra Valores del sistema, Valores de herramientas, Valores referentes a bloques de procesos,
  */
 ?>
 <?php
@@ -51,6 +51,13 @@ switch ($fs) {
         $MostrarBtnAdd = false;
 
         break;
+    case "bprocesos":
+        $bloqueIncluir = $path2loadAbs . 'root/MainConfigBProcesos.php';
+        $tituloFrm = 'Edici&oacute;n de Bloques de Procesos';
+        $getVar = 'bloquesprocesos';
+        $MostrarBtnAdd = false;
+
+        break;    
     default:
         break;
 }
