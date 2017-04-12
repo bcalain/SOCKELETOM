@@ -55,7 +55,7 @@ switch ($fs) {
         $bloqueIncluir = $path2loadAbs . 'root/MainConfigBProcesos.php';
         $tituloFrm = 'Edici&oacute;n de Bloques de Procesos';
         $getVar = 'bloquesprocesos';
-        $MostrarBtnAdd = false;
+        $MostrarBtnAdd = FALSE;
 
         break;    
     default:
@@ -64,6 +64,8 @@ switch ($fs) {
 ?>  
 
 <table border="0" align="center" width="70%">
+    
+    
     <?php
     // Si la conf se guardo mostramos msg de exito
     if (isset($_GET['success']) && $_GET['success'] == true) {
@@ -80,8 +82,17 @@ switch ($fs) {
     // Si la conf no se guardo mostramos msg de error
     elseif (isset($_GET['success']) && $_GET['success'] == FALSE) {
         ?>
-
+        <tr><td>
+                <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    La configuraci&oacute;n NO se actualiz&oacute; correctamente.
+                </div>
+            </td>
+        </tr>
     <?php } ?>
+        
+        
+        
     <tr><td>
             <form action="?app=savemainconfig&seccion=<?php echo $getVar ?>" method="post">
                 <div class="panel panel-default">
@@ -103,7 +114,7 @@ switch ($fs) {
                                         <a href="#myModalHelp" data-toggle="modal" title="Ayuda">
                                             <span class="glyphicon glyphicon-question-sign"></span> 
                                         </a>
-                                    </div>
+                                    </div>    
                                 </li>
 
                             </ul>
