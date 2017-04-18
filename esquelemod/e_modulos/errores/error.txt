@@ -1,0 +1,49 @@
+***en scripts y ficheros*****
+
+200::E_USER_ERROR::path del fichero no encontrado 
+201::E_USER_ERROR::propiedades del fichero son incompatibles con los requisitos para su ejecucion 
+202::E_USER_ERROR::fichero corrupto, no se puede ejecutar el fichero 
+203::E_USER_ERROR::ejecucion de fichero abortada (se comienza a ejecutar el fichero pero se detiene por alguna causa)
+
+
+***en procedimientos y funciones*****
+
+300::E_USER_ERROR::la funcion no existe 
+301::E_USER_ERROR::parámetros incompatibles con la funcion 
+302::E_USER_ERROR::ejecucion de la funcion abortada (se comienza a ejecutar la funcion pero se detiene por alguna causa)
+
+
+ ***en clases y objetos*****
+
+400::E_USER_WARNING::el namespace no existe 
+401::E_USER_WARNING::la clase no existe 
+402::E_USER_WARNING::la instancia no existe 
+403 
+
+***en configuraciones***
+
+700::E_USER_ERROR::la configuracion del sistema esquelemod no existe 
+701::E_USER_ERROR::la configuracion del GEDEE no existe (__FILE__ __LINE__ GEDEE)
+702::E_USER_ERROR::la configuracion del PROCESO no existe (__FILE__ __LINE__ namespace\clase\GEDEE IDPROCESO )
+703::E_USER_ERROR::la configuracion de la APLICACION no existe (__FILE__ __LINE__ namespace\clase\GEDEE IDPROCESO APLICACION )
+704::E_USER_ERROR::la configuracion del MODULO no existe (__FILE__ __LINE__ namespace\clase\GEDEE IDPROCESO APLICACION MODULO )
+705::E_USER_WARNING::la configuracion de la HERRAMIENTA no existe (__FILE__ __LINE__ namespace\clase\HERRAMIENTA )
+706::E_USER_WARNING::la configuracion del UTIL no existe (__FILE__ __LINE__ namespace\clase\UTIL IDUTIL )
+
+*** en el poceso nucleo esquelemod ***
+801
+
+LO que esta dentro del parentesis se puede regular desde el gestor de errores, haciendo un procedimiento que segun true o false 
+este abilitado en la configuracion, incluya estos datos en el reporte de erroers, el egstor puede saber a que bloque pertenece
+el error por un intervalo del id o numero del error, el intervalo de los bloques puede estar tambien en la configuracion, como tambien si se 
+utiliza en errores y log o en uno de ellos solamente  
+
+
+#error::tipo de error::mensaje:: gerarquia_localizacion::tratamiento::alcance
+Li_num_error::Li_tipo_error::Ls_mensaje::Li_tratamiento::Li_alcance
+Li_num_error2::Li_tipo_error2::Ls_mensaje2::Li_tratamiento2::Li_alcance2
+Li_num_error4::Li_tipo_error4::Ls_mensaje4::Li_tratamiento4::Li_alcance4
+Li_num_error6::Li_tipo_error6::Ls_mensaje6::Li_tratamiento6::Li_alcance6
+Li_num_error7::Li_tipo_error7::Ls_mensaje7::Li_tratamiento7::Li_alcance7
+Li_num_error12::Li_tipo_error12::Ls_mensaje12::Li_tratamiento12::Li_alcance12
+Li_num_error122::Li_tipo_error122::Ls_mensaje122::Li_tratamiento122::Li_alcance122
