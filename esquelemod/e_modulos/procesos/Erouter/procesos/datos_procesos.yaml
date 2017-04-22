@@ -1,0 +1,26 @@
+# Fichero de Procesos y sus Datos, perteneciente al Proceso ERouter
+# version YAML 
+#
+##############################################
+#  Valores referentes a Bloques de procesos  #
+##############################################
+# Bloques de procesos a cargar por el sistema, desde el proceso ERouter
+procesos:
+          xxxxxxxx: 
+                    gedee_proceso: 
+                                   namespace: 
+                                   clase: 
+                                   id_entidad:                                                             
+                    propiedades_implementacion_proceso: 
+                                                                                  
+                                                        
+                                                        
+          yyyy: 
+                gedee_proceso: 
+                               namespace: 
+                               clase: 
+                               id_entidad:                                                            
+                propiedades_implementacion_proceso: 
+                                                    path_raiz:                           
+                                                    path_arranque: 
+                                                    obligatoriedad: 

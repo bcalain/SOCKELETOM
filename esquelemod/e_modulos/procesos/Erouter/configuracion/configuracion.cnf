@@ -1,0 +1,81 @@
+# Fichero de configuracion del proceso Enrutador
+# version YAML 
+
+# Propiedades del proceso Enrutador
+ propiedades_proceso:
+                        clave_proceso: erouter
+                        alias: enrutador
+                        version: 1.0.0
+                        dependencias:
+                        conflictos:
+#      
+# Datos de seguridad del proceso router
+ datos_seguridad:
+                    permiso_ejecucion:
+                                            ambito: permisivo
+                                            procesos:
+                    acceso_seguridad:
+                                            ambito: restrictivo
+                                            procesos:
+                    acceso_configuracion:
+                                            ambito: restrictivo
+                                            procesos:
+                    acceso_datos:
+                                            ambito: permisivo
+                                            procesos:
+                                                      *: leer
+#
+# Propiedades de la instancia de la clase ERouter
+ propiedades_objeto_router:
+                            localizacion: nucleo_skm 
+                            nombre_dominio_web:
+                            tipo_transporte: url-path-directorios
+                            tipo_mascara: url-amigable
+                            parametros_complementarios:
+                                                        llave_criptografia:
+                                                        comienzo_secciones_identificador: 1
+                                                        cantidad_secciones_identificador: 1
+                                                        cantidad_secciones_nomenclador: 2
+                            parametros_entidad_EEoInterfazDatos:
+                                                                 id_nombre_fich_cache: ERouter
+                                                                 fichero_interfaz:
+                                                                                   Ls_pathfich_interfaz: txt/eid_txt_mono_array_erouter.php
+                                                                                   Ls_path_base: e_dir_interfaz_datos
+                                                                 fichero_datos:
+                                                                                Ls_pathfich_datos: url_procesos.txt
+                                                                                Ls_path_base: e_dir_proceso_ejecucion
+                                                                 pathdir_cache: null
+                                                                 parametros_complementarios:
+                                                                                             Ls_separador: ":"
+                                                                                             Ls_llave_unica: url_entrada_virtual
+                            objetivo_gestion: proceso
+                            objetivo_gestion_defecto: proceso
+                            proceso:
+                                     defecto:
+                                              procesos:
+                                                        apertura: 
+                                                                  gedee_proceso: 
+                                                                                 namespace: \Emod\Nucleo\Gedees
+                                                                                 clase: GedeeEComun
+                                                                                 id_entidad: GedeeEComun
+                                                                  propiedades_implementacion_proceso: 
+                                                                                                      path_raiz: apertura                          
+                                                                                                      path_arranque: apertura_control.php
+                                                                                                      obligatoriedad: 2
+                                     parametros_entidad_EEoInterfazDatos:
+                                                                          id_nombre_fich_cache: ERouter
+                                                                          fichero_interfaz:
+                                                                                            Ls_pathfich_interfaz: hereda
+                                                                                            Ls_path_base: hereda
+                                                                          fichero_datos:
+                                                                                         Ls_pathfich_datos: procesos/datos_procesos.yaml
+                                                                                         Ls_path_base: e_dir_proceso_ejecucion
+                                                                          pathdir_cache: statu_procesos				                       
+#                           mime:
+#                                 defecto:
+#                                          localizacion_recurso: procesos
+#                                          path_recurso:    											
+#      
+#              									 	
+#
+#

@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+# Activar RewriteEngine
+RewriteEngine on
+# Redireccionar todos los datos en url posteriores al dominio, hacia index.php
+#   Entrada: .*
+#   Salida: index.php
+#   [QSA]agregar un query string al final de la expresion (URL)
+RewriteRule ^.*$ index.php [QSA]
+</IfModule>
+#Proteger este archivo de la lectura directa del navegador 
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
