@@ -1,9 +1,9 @@
 # SOCKELETOM
-###Esqueleto con Sockets, como Motor de Códigos PHP en forma de módulos#
+##Esqueleto con Sockets, como Motor de Códigos PHP en forma de módulos
 
 Licencia GPL3
 
-Versión 1.0.0
+Versión 1.0.1
 
 Lenguage PHP 5.3 o Superior
 
