@@ -1,3 +1,7 @@
 version.
-        -1.0.0
-               Sistema Sockeletom listo para usarse.
+
+	-1.0.1 Pruebas
+	      Ver Sección HISTORIAL DE VERSIONES Y CAMBIOS del Manual del Sockeletom
+
+        -1.0.0 Pruebas
+	      Sistema Sockeletom listo para usarse.
