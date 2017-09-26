@@ -288,6 +288,62 @@ errores:
                                                     - proceso
                                                     - gedee_proceso
          tipos_error: E_ALL
+#
+###########################################
+#  Valores referentes a Logs de procesos  #
+###########################################
+# 
+logs:
+      ejecucion: true
+      tipos_log:
+                 logs_procesos: EEoLogsProcesos
+      path_dir_raiz: logs
+      entidad_logs_emod:
+                         Emod\Nucleo\Logs:
+                                           ELogs:
+                                                  path_entidad_clase: e_modulos/nucleo/nucleo_bib_funciones/class_elogs.php
+                                                  referencia_path_entidad: relativo_esquelemod
+                                                  tipo_entidad: objeto
+                                                  iniciacion: construct
+                                                  instancias:
+                                                              EEoLogsProcesos:
+      logs_procesos:
+                     ejecucion: true
+                     parametros_instanciacion_entidadlog:
+                                                          entidad_gedegl_emod:
+                                                                               Emod\Nucleo\Logs\Gedegl: 
+                                                                                                        GedeglTxtEmod:
+                                                                                                                       path_entidad_clase: e_modulos/logs/gedegel/gedegl_txt_emod/gedegl_bib_funciones/class_gedegl_txt_emod.php
+                                                                                                                       referencia_path_entidad: relativo_esquelemod
+                                                                                                                       tipo_entidad: objeto
+                                                                                                                       instancias:
+                                                                                                                                    GedeglTxtEmod:
+                                                          entidad_pgerl:
+                                                                         Emod\Nucleo\Logs\Gedegl:
+                                                                                                  ProcedimientosGestoresElementosLog:
+                                                                                                                                      path_entidad_clase: e_modulos/logs/gedegel/class_procedimientos_elementoslog.php
+                                                                                                                                      referencia_path_entidad: relativo_esquelemod
+                                                                                                                                      tipo_entidad: clase
+                                                                                                                                      instancias:
+                                                                                                                                                  ProcedimientosGestoresElementosLog:
+                                                          elementos_registro_log:
+                                                                                  - tiempo_unix
+                                                                                  - id_proceso
+                                                                                  - Namespace_gedee_proceso
+                                                                                  - class_gedee_proceso
+                                                                                  - estado_proceso
+                                                                                  - registro_ejecucion_arbol_procesos
+                                                                                  - fichero
+                                                                                  - linea 
+                                                          formato_registro_log:
+                                                                                formato:
+                                                                                         separador: "<>"
+                                                                                         caracter_indentacion: "}"
+                                                                                filtrado:
+                                                                                          marca_ausente: true
+                                                          fuente_datos_log:
+                                                                              path_fich_log: log_procesos.txt
+                                                                              referencia_path_fichlog: relativo
 #                                                                            
 ##############################################
 #  Valores referentes a Bloques de procesos  #

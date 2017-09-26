@@ -44,6 +44,8 @@
         private $lbIniciacionErrores           = null;
         private $lbIniciacionHerramientas      = null;
         private $lbIniciacionUtiles            = null;
+        private $lbIniciacionLogs              = NULL;
+        private $EEoLogsProcesos               = NULL;
         private $lsPathDirRaizProcesoEjecucion = ''; 
         private $lsIdProcesoEjecucion          = ''; 
         private $lsNamespaceGedeeProcesoEjecucion = '';
@@ -260,6 +262,18 @@
                         \Emod\Nucleo\CropNucleo::ingresarNuevoObjeto( 'EEoErrores' , $this->EEoErrores );
                         }
                    
+                    if ( !empty( $datos_configuracion['logs']['ejecucion'] ) )
+                        {
+                        	if( empty( $this->iniciacionLogs( $datos_configuracion['logs'] )) )
+                        	{
+                        		trigger_error('La gesti&oacute;n de logs por el sistema esquelemod no pudo ser iniciada' , E_USER_WARNING);
+                        	}
+                        }
+                        else
+                        {
+                        	trigger_error('La ejecuci&oacute;n de gesti&oacute;n de logs por el sistema esquelemod esta desactivada, la propiedad correspondiente a la ejecuci&oacute;n de los logs tiene valor vac&iacute;o en la configuraci&oacute;n del sistema' , E_USER_WARNING);
+                        }
+                    
                     if ( !empty( $datos_configuracion['gedees']['path_dir_raiz'] ) && !empty( $datos_configuracion['gedees']['existentes_sistema'] ) )
                         {
                         $this->iniciacionClassGedees( $datos_configuracion['gedees'] );
@@ -404,6 +418,63 @@
                     }
                 $this->lbIniciacionUtiles = true;
                 }
+            }
+            
+        private function iniciacionLogs( $La_configuracion_nucleo_logs = NULL )
+            {
+            	if ( !empty( $La_configuracion_nucleo_logs ) && is_array( $La_configuracion_nucleo_logs ) && !empty( $La_configuracion_nucleo_logs['ejecucion'] ) && !empty( $La_configuracion_nucleo_logs['path_dir_raiz'] ) && empty( $this->lbEConfiguracionEjecutada ) && empty( $this->lbIniciacionLogs ) )
+            	{
+            		if ( !( $this->lbIniciacionHerramientas ) )
+            		{
+            			trigger_error('Fallida la iniciaci&oacute;n de la clase Logs, Clase herramientas no iniciada' , E_USER_ERROR ) ;
+            		}
+            		
+            		if ( !empty( $La_configuracion_nucleo_logs['entidad_logs_emod'] ) && is_array( $La_configuracion_nucleo_logs['entidad_logs_emod'] ) )
+            		{
+            			reset( $La_configuracion_nucleo_logs['entidad_logs_emod'] );
+            			$entidad_logs_emod['namespace']= key( $La_configuracion_nucleo_logs['entidad_logs_emod'] );
+            			reset( $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']] );
+            			$entidad_logs_emod['clase']= key( $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']] );
+            			reset( $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['instancias'] );
+            			$entidad_logs_emod['id_instancia']= key( $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['instancias'] );
+            			
+            			if ( !empty($La_configuracion_nucleo_logs['tipos_log']) && is_array($La_configuracion_nucleo_logs['tipos_log']) )
+            			{
+            				$La_configuracion_nucleo_logs['tipos_log'] = array_unique($La_configuracion_nucleo_logs['tipos_log']);
+            				
+            				foreach( $La_configuracion_nucleo_logs['tipos_log'] as $tipo_log => $instancia_asociada )
+            				{
+            					if ( isset($La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['instancias'][$instancia_asociada]) && !empty( $La_configuracion_nucleo_logs[$tipo_log]) && is_array($La_configuracion_nucleo_logs[$tipo_log]) && $La_configuracion_nucleo_logs[$tipo_log]['ejecucion'] )
+            					{
+            						if (!empty($La_configuracion_nucleo_logs[$tipo_log]['parametros_instanciacion_entidadlog']))
+            						{
+            							$La_configuracion_nucleo_logs[$tipo_log]['parametros_instanciacion_entidadlog'] = array('path_raiz_log' => $La_configuracion_nucleo_logs['path_dir_raiz'])+$La_configuracion_nucleo_logs[$tipo_log]['parametros_instanciacion_entidadlog'];
+            							$La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['instancias'][$instancia_asociada]['parametros_iniciacion'] = $La_configuracion_nucleo_logs[$tipo_log]['parametros_instanciacion_entidadlog'] ;
+            						}
+            						
+            						\Emod\Nucleo\Herramientas::gestionIngresoEntidad($entidad_logs_emod['namespace'] , $entidad_logs_emod['clase'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['path_entidad_clase'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['referencia_path_entidad'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['tipo_entidad'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['instancias'],  $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['iniciacion']);
+            						
+            						if ( $instancia_asociada = 'EEoLogsProcesos')
+            						{
+            							$this->EEoLogsProcesos = \Emod\Nucleo\Herramientas::entidad($entidad_logs_emod['namespace'] , $entidad_logs_emod['clase'] , $instancia_asociada);
+            						}
+            					}
+            					else
+            					{
+            						trigger_error("No se pudo crear la entidad log $tipo_log en __METHOD__", E_USER_WARNING);
+            					}
+            				}
+            			}
+            			
+            			if ( empty( $this->EEoLogsProcesos) )
+            			{
+            				trigger_error('Fallida la iniciaci&oacute;n de la Entidad EEoLogsProcesos del Sockeletom' , E_USER_WARNING ) ;
+            			}
+            			$this->lbIniciacionLogs = true ;
+            			return true ;
+            		}
+            	}
+            	trigger_error('No se pudo gestionar la iniciaci&oacute;n de Logs del sistema Esquelemod' , E_USER_WARNING) ;
             }
 
 		private function iniciacionProcesos ( $La_configuracion_nucleo_procesos = null )
@@ -928,7 +999,17 @@
                     $this->lsNamespaceGedeeProcesoEjecucion = $Ls_namespace_gedee_proceso;
                     $this->lsClaseGedeeProcesoEjecucion     = $Ls_clase_gedee_proceso;
 
-                    return $this->procesoHijo( $id_proceso , $Ls_path_dir_raiz_proceso );
+                    $clave_proceso = $this->procesoHijo( $id_proceso , $Ls_path_dir_raiz_proceso );
+                    
+                    if (!empty($this->lbIniciacionLogs))
+                    {
+                    	if (!empty($this->EEoLogsProcesos))
+                    	{
+                    		$this->EEoLogsProcesos->log(array('linea'=>__LINE__ , 'fichero'=>__FILE__));
+                    	}
+                    }
+                    
+                    return $clave_proceso ;
                     }
                 }
             return null;
@@ -946,6 +1027,15 @@
                     { 
                     if ( $id_clave_ejecucion == $this->apuntadorProcesoActual['id_clave_ejecucion'] )
                         {
+                        
+                        if (!empty($this->lbIniciacionLogs))
+                        	{
+                        		if (!empty($this->EEoLogsProcesos))
+                        		{
+                        			$this->EEoLogsProcesos->log(array('estado_proceso'=>2 , 'linea'=>__LINE__ , 'fichero'=>__FILE__));
+                        		}
+                        	}
+                        	
                         $this->procesoPadre();
                         
                         if( ( $this->lsNamespaceGedeeProcesoNucleo == $this->apuntadorProcesoActual['namespace_gedee'] ) && ( $this->lsClaseGedeeProcesoNucleo == $this->apuntadorProcesoActual['clase_gedee'] ) )
@@ -999,6 +1089,11 @@
             return null;
             }
 
+        public function reapProcesoEjecucion()
+            {
+            	return $this->apuntadorProcesoActual['id_clave_ejecucion'] ;
+            }
+        
         public function accederPropiedadesProcesoPadre()
             {
             if ( !empty( $this->apuntadorProcesoActual['apuntador_proceso_padre'] ) )

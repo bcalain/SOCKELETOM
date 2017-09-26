@@ -185,8 +185,6 @@ class ELogs
 									}
 							}
 						
-						echo '<p>' . $sentencia . ' en ' . __METHOD__ . ' linea ' . __LINE__ . '<p>';
-						
 						eval( $sentencia );
 						
 						return $resultado;

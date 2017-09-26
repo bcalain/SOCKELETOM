@@ -41,6 +41,7 @@
         require 'nucleo_bib_funciones/class_ecrop_nucleo.php' ;
         require 'nucleo_bib_funciones/class_gedees.php' ;
         require 'nucleo_bib_funciones/trait_dependencias_entidades_emod.php';
+        require 'nucleo_bib_funciones/trait_dependencias_estaticas_entidades_emod.php';
         require 'nucleo_bib_funciones/class_enucleo_entidad_base.php';
         require 'nucleo_bib_funciones/class_enucleo_control.php';
         require 'nucleo_bib_funciones/herramientas/class_einterfaz_datos.php' ;

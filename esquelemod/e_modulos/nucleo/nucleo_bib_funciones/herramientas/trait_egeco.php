@@ -576,18 +576,21 @@
                                 {
                                 $Ls_instanciando    = '$objeto = new $entidad(';
                                 $Li_cant_parametros = count( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] );
-                                for ( $Li_contador = 0; $Li_contador < $Li_cant_parametros; $Li_contador++ )
-                                    {
-                                    $Ls_instanciando.= 'self::$laEntidades[$Ls_namespace][$Ls_clase][\'instancias\'][$Ls_id_entidad][\'parametros_iniciacion\']' . "[$Li_contador]";
-                                    if ( $Li_contador < ( $Li_cant_parametros - 1 ) )
-                                        {
-                                        $Ls_instanciando.= ' , ';
-                                        }
-                                    else
-                                        {
-                                        $Ls_instanciando.= ' ) ; ';
-                                        }
-                                    }
+                                $Li_contador=1;
+                                
+                                foreach ( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] as $llave_parametro_iniciacion => $valor_parametro_iniciacion )
+                                {
+                                	$Ls_instanciando.= 'self::$laEntidades[$Ls_namespace][$Ls_clase][\'instancias\'][$Ls_id_entidad][\'parametros_iniciacion\']' . "['$llave_parametro_iniciacion' ]";
+                                	if ( $Li_contador < ( $Li_cant_parametros ) )
+                                	{
+                                		$Ls_instanciando.= ' , ';
+                                		$Li_contador++;
+                                	}
+                                	else
+                                	{
+                                		$Ls_instanciando.= ' ) ; ';
+                                	}
+                                }
                                     
                                 eval( $Ls_instanciando );
                                 unset( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] );
@@ -597,19 +600,22 @@
                                 $objeto             = new $entidad();
                                 $Ls_iniciando       = '$objeto->' . self::$laEntidades[$Ls_namespace][$Ls_clase]['iniciacion'] . '(';
                                 $Li_cant_parametros = count( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] );
-
-                                for ( $Li_contador = 0; $Li_contador < $Li_cant_parametros; $Li_contador++ )
-                                    {
-                                    $Ls_iniciando.= 'self::$laEntidades[$Ls_namespace][$Ls_clase][\'instancias\'][$Ls_id_entidad][\'parametros_iniciacion\']' . "[$Li_contador]";
-                                    if ( $Li_contador < ( $Li_cant_parametros - 1 ) )
-                                        {
-                                        $Ls_iniciando.= ' , ';
-                                        }
-                                    else
-                                        {
-                                        $Ls_iniciando.= ' ) ; ';
-                                        }
-                                    }
+								$Li_contador=1;
+                                
+                                foreach ( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] as $llave_parametro_iniciacion => $valor_parametro_iniciacion )
+                                {
+                                	$Ls_iniciando.= 'self::$laEntidades[$Ls_namespace][$Ls_clase][\'instancias\'][$Ls_id_entidad][\'parametros_iniciacion\']' . "['$llave_parametro_iniciacion' ]";
+                                	//recuerda hacer esto mismo para la entidad tipo clase mas abajo
+                                	if ( $Li_contador < ( $Li_cant_parametros ) )
+                                	{
+                                		$Ls_iniciando.= ' , ';
+                                		$Li_contador++;
+                                	}
+                                	else
+                                	{
+                                		$Ls_iniciando.= ' ) ; ';
+                                	}
+                                }
                                 
                                 eval( $Ls_iniciando );
                                 unset( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] );
@@ -673,19 +679,22 @@
                                     {
                                     $Ls_iniciando       = $Ls_namespace . '\\' . $Ls_clase . '::' . self::$laEntidades[$Ls_namespace][$Ls_clase]['iniciacion'] . '(';
                                     $Li_cant_parametros = count( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] );
-
-                                    for ( $Li_contador = 0; $Li_contador < $Li_cant_parametros; $Li_contador++ )
-                                        {
-                                        $Ls_iniciando.= 'self::$laEntidades[$Ls_namespace][$Ls_clase][\'instancias\'][$Ls_id_entidad][\'parametros_iniciacion\']' . "[$Li_contador]";
-                                        if ( $Li_contador < ( $Li_cant_parametros - 1 ) )
-                                            {
-                                            $Ls_iniciando.= ' , ';
-                                            }
-                                        else
-                                            {
-                                            $Ls_iniciando.= ' ) ; ';
-                                            }
-                                        }
+									$Li_contador=1;
+                                    
+                                    foreach ( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] as $llave_parametro_iniciacion => $valor_parametro_iniciacion )
+                                    {
+                                    	$Ls_iniciando.= 'self::$laEntidades[$Ls_namespace][$Ls_clase][\'instancias\'][$Ls_id_entidad][\'parametros_iniciacion\']' . "['$llave_parametro_iniciacion' ]";
+                                    	//recuerda hacer esto mismo para la entidad tipo clase mas abajo
+                                    	if ( $Li_contador < ( $Li_cant_parametros ) )
+                                    	{
+                                    		$Ls_iniciando.= ' , ';
+                                    		$Li_contador++;
+                                    	}
+                                    	else
+                                    	{
+                                    		$Ls_iniciando.= ' ) ; ';
+                                    	}
+                                    }
                                     eval( $Ls_iniciando );
                                     unset( self::$laEntidades[$Ls_namespace][$Ls_clase]['instancias'][$Ls_id_entidad]['parametros_iniciacion'] );
                                     }
