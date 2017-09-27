@@ -1,7 +1,11 @@
 version.
 
+	-1.1.0 Pruebas
+	      Adición de un Gestor de Logs al sistema.
+	      Ver Sección HISTORIAL DE VERSIONES Y CAMBIOS del Manual del Sockeletom.
+	
 	-1.0.1 Pruebas
-	      Ver Sección HISTORIAL DE VERSIONES Y CAMBIOS del Manual del Sockeletom
+	      Ver Sección HISTORIAL DE VERSIONES Y CAMBIOS del Manual del Sockeletom.
 
-        -1.0.0 Pruebas
+    -1.0.0 Pruebas
 	      Sistema Sockeletom listo para usarse.

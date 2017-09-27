@@ -45,7 +45,7 @@ sistema:
           propiedades_servidor_hospedero:
                                           nombre_dominio_web: localhost.emod
           propiedades_proceso: 
-                               version_sistema: 1.0.0
+                               version_sistema: 1.1.0
                                id_proceso: NucleoEsquelemod
                                namespace_gedee: \Emod\Nucleo\Gedees
                                clase_gedee: GedeeENucleo
