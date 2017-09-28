@@ -1,5 +1,5 @@
 # SOCKELETOM
-## Esqueleto con Sockets, como Motor de Códigos PHP en forma de módulos
+## Esqueleto con Sockets, como Motor de Códigos PHP en forma de Módulos
 
 Licencia GPL3
 
