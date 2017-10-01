@@ -57,82 +57,83 @@ switch ($fs) {
         $getVar = 'bloquesprocesos';
         $MostrarBtnAdd = FALSE;
 
-        break;    
+        break; 
+    
     default:
         break;
 }
 ?>  
+<div class="row">
 
-<table border="0" align="center" width="70%">
-    
-    
-    <?php
-    // Si la conf se guardo mostramos msg de exito
-    if (isset($_GET['success']) && $_GET['success'] == true) {
-        ?>
-        <tr><td>
-                <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    La configuraci&oacute;n se actualiz&oacute; correctamente.
-                </div>
-            </td>
-        </tr>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
         <?php
-    }
-    // Si la conf no se guardo mostramos msg de error
-    elseif (isset($_GET['success']) && $_GET['success'] == FALSE) {
-        ?>
-        <tr><td>
-                <div class="alert alert-warning alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    La configuraci&oacute;n NO se actualiz&oacute; correctamente.
-                </div>
-            </td>
-        </tr>
-    <?php } ?>
-        
-        
-        
-    <tr><td>
-            <form action="?app=savemainconfig&seccion=<?php echo $getVar ?>" method="post">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><label class=""><?php echo $tituloFrm; ?></label>        
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <div class="btn-group btn-group-xs">
-                                        <?php if ($MostrarBtnAdd) { ?>
-                                            <a href="#myModalAgregar" data-toggle="modal" title="Agregar nuevo">
-                                                <span class="glyphicon glyphicon-plus"></span>
-                                            </a>
-                                        <?php } ?>
-                                    </div>
-                                </li>
-                                <li>&numsp; </li>
-                                <li>
-                                    <div class="btn-group btn-group-xs">
-                                        <a href="#myModalHelp" data-toggle="modal" title="Ayuda">
-                                            <span class="glyphicon glyphicon-question-sign"></span> 
-                                        </a>
-                                    </div>    
-                                </li>
+        // Si la conf se guardo mostramos msg de exito
+        if (isset($_GET['success']) && $_GET['success'] == true) {
+            ?>
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                La configuraci&oacute;n se actualiz&oacute; correctamente.
+            </div>
+            <?php
+        }
+        // Si la conf no se guardo mostramos msg de error
+        elseif (isset($_GET['success']) && $_GET['success'] == FALSE) {
+            ?>
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                La configuraci&oacute;n NO se actualiz&oacute; correctamente.
+            </div>
+        <?php } ?>        
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
 
-                            </ul>
-                        </h3>
+                    <form class="form-horizontal" role="form" action="?app=savemainconfig&seccion=<?php echo $getVar ?>" method="post">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><label class=""><?php echo $tituloFrm; ?></label>        
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <?php if ($MostrarBtnAdd) { ?>
+                                                    <a href="#myModalAgregar" data-toggle="modal" title="Agregar nuevo">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        </li>
+                                        <li class="margen"></li>
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#myModalHelp" data-toggle="modal" title="Ayuda">
+                                                    <span class="glyphicon glyphicon-question-sign"></span> 
+                                                </a>
+                                            </div>    
+                                        </li>
 
-                    </div>
-                    <div class="panel-body">
-                        <!-- La sgte secciÃ³n depende de la selecciÃ³n que se hizo en el menÃº -->
-                        <?php
-                        include $bloqueIncluir;
-                        ?>
+                                    </ul>
+                                </h3>
 
-                    </div>
-                    <div class="panel-footer"  align="right"><button class="btn btn-primary btn-sm" type="submit">Aceptar</button></div>
-                </div>
-            </form>
-        </td>
-    </tr>
-    <tr><td align="center"></td></tr>
-</table>
+                            </div>
+                            <div class="panel-body">
+                                <!-- La sgte seccion depende de la seleccion que se hizo en el menu -->
+                                <?php
+                                include $bloqueIncluir;
+                                ?>
+
+                            </div>
+                            <div class="panel-footer text-right"><button class="btn btn-primary btn-sm" type="submit">Aceptar</button></div>
+                        </div>
+                    </form>
+               
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+
 

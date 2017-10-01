@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--
-Muestra la lista de procesos y herramientas en Inicio
+Muestra la lista de procesos y herramientas en Inicio.
+En versiones futuras cambiar <table> por <div>
 -->
 <?php
 /**
@@ -8,7 +9,7 @@ Muestra la lista de procesos y herramientas en Inicio
  */
 $readDir = 'esquelemod/e_modulos/procesos/';
 $arrayDir = scandir($readDir);
-################3
+################
 //$running = $this->EEoNucleo->accederHistorialArbolProcesos();
 
 /* $contenidoFichPHP = "<?php \n" . '$datos = ' . var_export($running, true) . "\n?>";
@@ -19,7 +20,7 @@ $arrayDir = scandir($readDir);
 <div class="table-responsive">
     <table class="table">
         <tr>
-            <td align="">
+            <td>
                 <form action="?app=savemainconfig&seccion=<?php ?>" method="post">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -32,10 +33,10 @@ $arrayDir = scandir($readDir);
                                             </a>
                                         </div>
                                     </li>
-                                    <li>&numsp; </li>
+                                    <li class="margen"></li>
                                     <li>
                                         <div class="btn-group btn-group-xs">
-                                            <a href="#myModal" data-toggle="modal" title="Ayuda">
+                                            <a href="#myModalHelp" data-toggle="modal" title="Ayuda">
                                                 <span class="glyphicon glyphicon-question-sign"></span> 
                                             </a>
                                         </div>
@@ -54,13 +55,13 @@ $arrayDir = scandir($readDir);
 
                             <table class="table table-hover table-condensed">
                                 <thead>
-                                <th align="center">Nombre</th>
-                                <th align="center">Estado</th>
-                                <!--<th align="center">Estructura</th>-->
-                                <!--<th align="center"></th>-->
-                                <th align="center"></th>
-                                <th align="center"></th>
-                                <th align="center"></th>
+                                <th >Nombre</th>
+                                <th >Estado</th>
+                                <!--<th >Estructura</th>-->
+                                <!--<th ></th>-->
+                                <th ></th>
+                                <th ></th>
+                                <th ></th>
                                 </thead>
                                 <?php
                                 foreach ($arrayDir as $key => $nombreDir) {
@@ -68,25 +69,25 @@ $arrayDir = scandir($readDir);
                                         ?>
 
                                         <tr>
-                                            <td align=""><span class="glyphicon glyphicon-cog"></span> <?php echo $nombreDir ?></td>
-                                            <td align="">Corriendo...</td>
-                                           <!-- <td align="">Estructura</td> -->
-                                           <!-- <td align=""> <!-- Play/Pause a los procesos 
+                                            <td><span class="glyphicon glyphicon-cog"></span> <?php echo $nombreDir ?></td>
+                                            <td>Corriendo...</td>
+                                           <!-- <td>Estructura</td> -->
+                                           <!-- <td> <!-- Play/Pause a los procesos 
                                                 <a href="#myModal" data-toggle="modal" title="Pausa">
                                                     <span class="glyphicon glyphicon-play"></span> 
                                                 </a>-->
                                             </td>
-                                            <td align=""> <!-- Editar configuración de un proceso -->
+                                            <td> <!-- Editar configuración de un proceso -->
                                                 <a href="" data-toggle="modal" data-target="#myModalAgregar" title="Editar configuraci&oacute;n">
                                                     <span class="glyphicon glyphicon-pencil"></span> 
                                                 </a>
                                             </td>
-                                            <td align=""> <!-- Editar permisos de un proceso -->
+                                            <td> <!-- Editar permisos de un proceso -->
                                                 <a href="#myModal" data-toggle="modal" title="Editar permisos">
                                                     <span class="glyphicon glyphicon-user"></span> 
                                                 </a>
                                             </td>
-                                            <td align=""> <!-- Exportar un proceso -->
+                                            <td> <!-- Exportar un proceso -->
                                                 <a href="#myModal" data-toggle="modal" title="Exportar proceso">
                                                     <span class="glyphicon glyphicon-export"></span> 
                                                 </a>
@@ -104,7 +105,7 @@ $arrayDir = scandir($readDir);
 
             </td>
             <td width="5%"> <!-- Separacion entre las dos columnas --> </td>
-            <td align="">
+            <td>
                 <form action="?app=savemainconfig&seccion=<?php ?>" method="post">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -117,7 +118,7 @@ $arrayDir = scandir($readDir);
                                             </a>
                                         </div>
                                     </li>
-                                    <li>&numsp;  </li>
+                                    <li class="margen"></li>
                                     <li>
                                         <div class="btn-group btn-group-xs">
                                             <a href="#myModal" data-toggle="modal" title="Ayuda">
@@ -146,11 +147,11 @@ $arrayDir = scandir($readDir);
                         <div class="panel-body">
                             <table class="table table-hover table-condensed">
                                 <thead>
-                                <th align="">Nombre</th>
-                                <th align="">Descargar</th>
-                                <th align=""></th>
-                                <th align=""></th>
-                                <th align=""></th>
+                                <th>Nombre</th>
+                                <th>Descargar</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 </thead>
                                 <?php
                                 foreach ($datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'] as $key => $tool) 
@@ -163,24 +164,24 @@ $arrayDir = scandir($readDir);
                                     ?>
 
                                     <tr>
-                                        <td align=""><span class="glyphicon glyphicon-wrench"></span> <?php echo $key ?></td>
-                                        <td align="">Corriendo...</td>
-                                        <!--<td align=""> <!-- Play/Pause a los procesos 
+                                        <td><span class="glyphicon glyphicon-wrench"></span> <?php echo $key ?></td>
+                                        <td>Corriendo...</td>
+                                        <!--<td> <!-- Play/Pause a los procesos 
                                             <a href="#myModal" data-toggle="modal" title="Pausa">
                                                 <span class="glyphicon glyphicon-play"></span> 
                                             </a>
                                         </td>-->
-                                        <td align=""> <!-- Editar configuración de una herramienta -->
+                                        <td> <!-- Editar configuración de una herramienta -->
                                             <a href="<?php echo $urlConfigTool ?>">
                                                 <span class="glyphicon glyphicon-pencil"></span> 
                                             </a>
                                         </td>
-                                        <td align=""> <!-- Editar permisos de un proceso -->
+                                        <td> <!-- Editar permisos de un proceso -->
                                             <a href="#myModal" data-toggle="modal" title="Editar permisos">
                                                 <span class="glyphicon glyphicon-user"></span> 
                                             </a>
                                         </td>
-                                        <td align=""> <!-- Exportar un proceso -->
+                                        <td> <!-- Exportar un proceso -->
                                             <a href="#myModal" data-toggle="modal" title="Exportar proceso">
                                                 <span class="glyphicon glyphicon-export"></span> 
                                             </a>

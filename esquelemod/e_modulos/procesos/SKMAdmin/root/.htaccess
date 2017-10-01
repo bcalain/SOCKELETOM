@@ -1,0 +1,7 @@
+# This folder does not require access over HTTP
+# (the following directive denies access by default)
+Order allow,deny
+
+
+#RewriteCond %{SERVER_PORT} !=443
+#RewriteRule ^ https://localhost:443%{REQUEST_URI} [NS,R,L]

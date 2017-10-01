@@ -52,38 +52,38 @@ $datosConfig = \Emod\Nucleo\Herramientas\Spyc::YAMLLoad($path2loadAbs . 'config.
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SKM Administracion</title>
-        <meta charset="UTF-8">
+        <meta name="Description" content="SKMAdmin" />
+        <meta name="Keywords" content="SKMAdmin, SKM, Framework, Sockeletom" />
+        <title>SKMAdmin</title>
 
         <link rel="stylesheet" href="<?php echo $path2load ?>style.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $pathRelBootstrap ?>/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo $pathRelBootstrap ?>/bootstrap/dist/css/bootstrap-theme.min.css">
-        <!-- <script src="<?php echo $path2load ?>js-bootstrap/bootstrap.min.js"></script> -->       
+        <link rel="stylesheet" href="<?php echo $pathRelBootstrap ?>/bootstrap/dist/css/bootstrap-theme.min.css">  
     </head>
     <body>
-        <table border="0" align="center">
-            <tr><td>
-                    <div class="contenedor">
 
-                        <h3 class="form-signin-heading" align="center"><img src="<?php echo $path2load ?>img/SKMAdmin.jpg" alt="SKMAdmin"/></h3>
-                        <form class="form-signin" action="?app=chklogin" method="post">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <p><input name="inputUser" type="text" class="form-control" placeholder="Usuario" autofocus></p>
-                                    <p><input name="inputPass" type="password" class="form-control" placeholder="Contraseña"></p>
-                                </div>
-                                <div class="panel-footer" align="right"><button class="btn btn-primary btn-sm" type="submit">Aceptar</button></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <h3 class="form-signin-heading text-center"><img src="<?php echo $path2load ?>img/SKMAdmin.jpg" alt="SKMAdmin"/></h3>
+                    <form class="form-signin" action="?app=chklogin" method="post">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p><input name="inputUser" type="text" class="form-control" placeholder="Usuario" autofocus></p>
+                                <p><input name="inputPass" type="password" class="form-control" placeholder="Contraseña"></p>
                             </div>
-                        </form>
-                    </div>
+                            <div class="panel-footer text-center"><button class="btn btn-primary btn-sm" type="submit">Aceptar</button></div>
+                        </div>
+                    </form>
+                    <h5 class="text-center">ver <?php echo $datosConfig['version'] ?></h5>                   
                     <?php if (isset($_GET['login']) && $_GET['login'] === 'false') { ?>
                         <div class="alert alert-danger">Usuario o contrase&ntilde;a incorrectos</div>
                     <?php } ?>
-                </td>
-            </tr>
-            <tr><td align="center"><h5>ver <?php echo $datosConfig['version'] ?></h5></td></tr>
-        </table>
+                </div>
+            </div><!-- Final de la celda central -->
+            <div class="col-md-4"></div>
+        </div>
 
     </body>
 </html>

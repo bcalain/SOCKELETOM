@@ -20,16 +20,16 @@ $datosGet = $_GET;
         <?php //echo $comentario ?>
         </div>
         -->
-        <table width="100%">
-            <tr><td align="right">&numsp;&numsp;Nombre:</td>
-                <td>&numsp;
+        <table class="table">
+            <tr><td class="text-right">Nombre:</td>
+                <td>
                     <div class="col-lg-10">
                         <input class="form-control input-sm" id="disabledInput" type="text" name="datos[herramientas][existentes_sistema][\Emod\Nucleo\Herramientas]" value="<?php echo $datosGet['tool'] ?>" disabled>
                     </div>
                 </td>
             </tr>
-            <tr><td align="right">&numsp;&numsp;path_entidad_clase:</td>
-                <td>&numsp;
+            <tr><td class="text-right">path_entidad_clase:</td>
+                <td>
                     <div class="col-lg-10">
                         <!-- path_entidad_clase -->
                         <input class="form-control input-sm" type="text" name="datos[herramientas][existentes_sistema][\Emod\Nucleo\Herramientas][<?php echo $datosGet['tool']?>][path_entidad_clase]" value="<?php echo $datosGet['entidad'] ?>"/>
@@ -37,8 +37,8 @@ $datosGet = $_GET;
                 </td>
             </tr>
             <tr>
-                <td align="right">&numsp;&numsp;referencia_path_entidad:</td>
-                <td>&numsp;
+                <td class="text-right">referencia_path_entidad:</td>
+                <td>
                     <div class="col-lg-8">
                         <!-- referencia_path_entidad -->
                         <select class="form-control input-sm" name="datos[herramientas][existentes_sistema][\Emod\Nucleo\Herramientas][<?php echo $datosGet['tool']?>][referencia_path_entidad]">
@@ -57,8 +57,8 @@ $datosGet = $_GET;
                 </td>
             </tr>
             <tr>
-                <td align="right">&numsp;&numsp;tipo_entidad:</td>
-                <td>&numsp;
+                <td class="text-right">tipo_entidad:</td>
+                <td>
                     <div class="col-lg-8">
                         <select class="form-control input-sm" name="datos[herramientas][existentes_sistema][\Emod\Nucleo\Herramientas][<?php echo $datosGet['tool']?>][tipo_entidad]">
                             <?php                            
@@ -76,27 +76,15 @@ $datosGet = $_GET;
                 </td>
             </tr>
             <tr>
-                <td align="right">&numsp;&numsp;instancias / <?php echo $datosGet['tool'] ?> :</td>
-                <td>&numsp;
+                <td class="text-right">instancias / <?php echo $datosGet['tool'] ?> :</td>
+                <td>
                     <div class="col-lg-10">
                         <textarea class="form-control input-sm" rows="5"  name="datos[herramientas][existentes_sistema][\Emod\Nucleo\Herramientas][<?php echo $datosGet['tool'] ?>][instancias][<?php echo $datosGet['tool'] ?>]">
                         <?php echo trim($datos['herramientas']['existentes_sistema']['\Emod\Nucleo\Herramientas'][$datosGet['tool']]['instancias'][$datosGet['tool']]) ?>
                         </textarea>
                     </div>
                 </td>
-            </tr>
-            <?php
-
-            // path_entidad_clase
-            //echo '<tr><td align="right">&numsp;&numsp;path_entidad_clase:</td><td>&numsp;<div class="col-lg-10"><input class="form-control input-sm" type="text" name="datos[' . 'herramientas' . '][' . 'existentes_sistema' . '][' . '\Emod\Nucleo\Herramientas' . '][' . $datosGet['tool'] . '][' . 'path_entidad_clase' . ']" value="'.$datosGet['entidad'].'" /></div></td></tr>';
-            // referencia_path_entidad
-            //echo '<tr><td align="right">&numsp;&numsp;referencia_path_entidad:</td><td>&numsp;<div class="col-lg-8"><input class="form-control input-sm" type="text" name="datos[' . 'herramientas' . '][' . 'existentes_sistema' . '][' . '\Emod\Nucleo\Herramientas' . '][' . $datosGet['tool'] . '][' . 'referencia_path_entidad' . ']" value="'.$datosGet['referencia'].'" /></div></td></tr>';
-            // tipo_entidad
-            //echo '<tr><td align="right">&numsp;&numsp;tipo_entidad:</td><td>&numsp;<div class="col-lg-8"><input class="form-control input-sm" type="text" name="datos[' . 'herramientas' . '][' . 'existentes_sistema' . '][' . '\Emod\Nucleo\Herramientas' . '][' . $datosGet['tool'] . '][' . 'tipo_entidad' . ']" value="'.$datosGet['tipo'].'" /></div></td></tr>';
-            // instancias
-            //echo '<tr><td align="right">&numsp;&numsp;instancias/' . $datosGet['tool'] . ':</td><td>&numsp;<div class="col-lg-8"><input class="form-control input-sm" type="text" name="datos[' . 'herramientas' . '][' . 'existentes_sistema' . '][' . '\Emod\Nucleo\Herramientas' . '][' . $datosGet['tool'] . '][' . 'instancias' . '][' . $datosGet['tool'] . ']" value="" /></div></td></tr>';
-            //echo '';
-            ?>
+            </tr>           
         </table>
     </div>
 </div>
