@@ -454,14 +454,14 @@
             						
             						\Emod\Nucleo\Herramientas::gestionIngresoEntidad($entidad_logs_emod['namespace'] , $entidad_logs_emod['clase'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['path_entidad_clase'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['referencia_path_entidad'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['tipo_entidad'] , $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['instancias'],  $La_configuracion_nucleo_logs['entidad_logs_emod'][$entidad_logs_emod['namespace']][$entidad_logs_emod['clase']]['iniciacion']);
             						
-            						if ( $instancia_asociada = 'EEoLogsProcesos')
+            						if ( $instancia_asociada == 'EEoLogsProcesos')
             						{
             							$this->EEoLogsProcesos = \Emod\Nucleo\Herramientas::entidad($entidad_logs_emod['namespace'] , $entidad_logs_emod['clase'] , $instancia_asociada);
             						}
             					}
             					else
             					{
-            						trigger_error("No se pudo crear la entidad log $tipo_log en __METHOD__", E_USER_WARNING);
+            						trigger_error("No se pudo crear o está deshabilitada la entidad log $tipo_log en __METHOD__", E_USER_WARNING);
             					}
             				}
             			}
@@ -1005,7 +1005,7 @@
                     {
                     	if (!empty($this->EEoLogsProcesos))
                     	{
-                    		$this->EEoLogsProcesos->log(array('linea'=>__LINE__ , 'fichero'=>__FILE__));
+                    		$this->EEoLogsProcesos->log( array( 'linea' => array( __LINE__ ) , 'fichero' => array( __FILE__) ) );
                     	}
                     }
                     
@@ -1032,7 +1032,7 @@
                         	{
                         		if (!empty($this->EEoLogsProcesos))
                         		{
-                        			$this->EEoLogsProcesos->log(array('estado_proceso'=>2 , 'linea'=>__LINE__ , 'fichero'=>__FILE__));
+                        			$this->EEoLogsProcesos->log( array( 'estado_proceso' => array( 2 ) , 'linea' => array( __LINE__ ) , 'fichero' => array( __FILE__ ) ) );
                         		}
                         	}
                         	

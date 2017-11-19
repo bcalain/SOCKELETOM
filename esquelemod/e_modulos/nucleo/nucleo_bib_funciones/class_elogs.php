@@ -588,22 +588,76 @@ class ELogs
 								if( $this->lsTipoEntidadPGERLDefecto == 'clase' )
 									{
 										$func_array_ejecucion = array ( $this->PGERLDefecto , $miembro_registro_log );
-										$La_registro_log[$miembro_registro_log] = ( isset( $La_datos_miembros_registro[$miembro_registro_log] ) ) ? $func_array_ejecucion( $La_datos_miembros_registro[$miembro_registro_log] ) : $func_array_ejecucion();
+										
+										if ( isset( $La_datos_miembros_registro[$miembro_registro_log] ) )
+										{
+											$Ls_ejecutando_procedimientos = '$La_registro_log[$miembro_registro_log] = $func_array_ejecucion(';
+											$Li_cantid_parametros = count( $La_datos_miembros_registro[$miembro_registro_log] );
+											
+											$Li_contador=1;
+											
+											foreach ( $La_datos_miembros_registro[$miembro_registro_log] as $dato_parametro )
+											{
+												$Ls_ejecutando_procedimientos.= '$La_datos_miembros_registro[$miembro_registro_log][$Li_contador-1]';
+												
+												if ( $Li_contador < ( $Li_cantid_parametros ) )
+												{
+													$Ls_ejecutando_procedimientos.= ' , ';
+													$Li_contador++;
+												}
+												else
+												{
+													$Ls_ejecutando_procedimientos.= ' ) ; ';
+												}
+											}
+											
+											eval( $Ls_ejecutando_procedimientos);
+										}
+										else
+										{
+											$La_registro_log[$miembro_registro_log] = $func_array_ejecucion();
+										}
 									}
 								elseif( $this->lsTipoEntidadPGERLDefecto == 'objeto' )
 									{
 										$func_array_ejecucion = $miembro_registro_log;
-										$La_registro_log[$miembro_registro_log] = ( isset( $La_datos_miembros_registro[$miembro_registro_log] ) ) ? $this->lsTipoEntidadPGERLDefecto->$func_array_ejecucion( $La_datos_miembros_registro[$miembro_registro_log] ) : $this->lsTipoEntidadPGERLDefecto->$func_array_ejecucion();
+										
+										if ( isset( $La_datos_miembros_registro[$miembro_registro_log] ) )
+										{
+											$Ls_ejecutando_procedimientos = '$La_registro_log[$miembro_registro_log] = $this->lsTipoEntidadPGERLDefecto->$func_array_ejecucion(';
+											$Li_cantid_parametros = count( $La_datos_miembros_registro[$miembro_registro_log] );
+											
+											$Li_contador=1;
+											
+											foreach ( $La_datos_miembros_registro[$miembro_registro_log] as $dato_parametro )
+											{
+												$Ls_ejecutando_procedimientos.= '$La_datos_miembros_registro[$miembro_registro_log][$Li_contador-1]';
+												
+												if ( $Li_contador < ( $Li_cantid_parametros ) )
+												{
+													$Ls_ejecutando_procedimientos.= ' , ';
+													$Li_contador++;
+												}
+												else
+												{
+													$Ls_ejecutando_procedimientos.= ' ) ; ';
+												}
+											}
+											eval( $Ls_ejecutando_procedimientos);
+										}
+										else
+										{
+											$La_registro_log[$miembro_registro_log] = $this->lsTipoEntidadPGERLDefecto->$func_array_ejecucion();
+										}
 									}
 							}
 						
-						if( empty( $La_registro_log ) || !$this->crearDatosLog( $La_registro_log , $La_formato_registro_log , $La_elementos_registro_log , $La_fuente_datos_log ) )
+						if( !empty( $La_registro_log ) && $this->crearDatosLog( $La_registro_log , $La_formato_registro_log , $La_elementos_registro_log , $La_fuente_datos_log ) )
 							{
-								trigger_error( 'No se pudo crear el registro log' , E_USER_WARNING );
+								return TRUE;
 							}
-						
-						return TRUE;
 					}
+				trigger_error( 'No se pudo crear el registro log' , E_USER_WARNING );
 				return NULL;
 			}
 		
